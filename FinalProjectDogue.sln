@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1169
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dogue.UI.MVC", "..\Dogue.UI.MVC\Dogue.UI.MVC.csproj", "{17E34F5A-2A75-461D-BD5C-53DFD842CC0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dogue.EF.DATA", "Dogue.EF.DATA\Dogue.EF.DATA.csproj", "{2F3C84F5-F236-41C5-BDAB-1A56B56A61C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17E34F5A-2A75-461D-BD5C-53DFD842CC0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17E34F5A-2A75-461D-BD5C-53DFD842CC0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17E34F5A-2A75-461D-BD5C-53DFD842CC0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17E34F5A-2A75-461D-BD5C-53DFD842CC0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3C84F5-F236-41C5-BDAB-1A56B56A61C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3C84F5-F236-41C5-BDAB-1A56B56A61C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3C84F5-F236-41C5-BDAB-1A56B56A61C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3C84F5-F236-41C5-BDAB-1A56B56A61C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F95D14E-B8F6-466E-B97D-4ABBB6B5D132}
+	EndGlobalSection
+EndGlobal
