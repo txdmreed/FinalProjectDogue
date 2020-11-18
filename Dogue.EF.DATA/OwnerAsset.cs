@@ -26,16 +26,17 @@ namespace Dogue.EF.DATA
         public string AssetSpecies { get; set; }
         public string AssetBreed { get; set; }
         public string AssetAge { get; set; }
-        public Nullable<int> AssetSizeID { get; set; }
+        public string AssetSize { get; set; }
         public bool AssetTrainerCertified { get; set; }
-        public string OwnerID { get; set; }
+        public int OwnerID { get; set; }
         public byte[] AssetPhoto { get; set; }
         public string SpecialNotes { get; set; }
         public bool IsActive { get; set; }
         public System.DateTime DateAdded { get; set; }
+        public string DescriptiveColorProfile { get; set; }
     
-        public virtual OwnerInformation OwnerInformation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual OwnerInformation OwnerInformation { get; set; }
     }
 }

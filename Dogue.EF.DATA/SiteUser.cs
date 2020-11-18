@@ -12,16 +12,17 @@ namespace Dogue.EF.DATA
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class SiteUser
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
+        public SiteUser()
         {
             this.OwnerInformations = new HashSet<OwnerInformation>();
         }
     
-        public int RolesID { get; set; }
-        public string RoleName { get; set; }
+        public string UserID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OwnerInformation> OwnerInformations { get; set; }

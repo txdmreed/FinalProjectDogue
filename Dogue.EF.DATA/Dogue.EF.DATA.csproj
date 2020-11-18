@@ -94,7 +94,7 @@
     <Compile Include="Reservation.cs">
       <DependentUpon>DogueFinalProject.tt</DependentUpon>
     </Compile>
-    <Compile Include="Role.cs">
+    <Compile Include="SiteUser.cs">
       <DependentUpon>DogueFinalProject.tt</DependentUpon>
     </Compile>
   </ItemGroup>

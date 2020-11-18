@@ -32,8 +32,8 @@ namespace Dogue.EF.DATA
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<OwnerAsset> OwnerAssets { get; set; }
-        public virtual DbSet<OwnerInformation> OwnerInformations { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<SiteUser> SiteUsers { get; set; }
+        public virtual DbSet<OwnerInformation> OwnerInformations { get; set; }
     }
 }

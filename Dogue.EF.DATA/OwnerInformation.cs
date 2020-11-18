@@ -20,9 +20,8 @@ namespace Dogue.EF.DATA
             this.OwnerAssets = new HashSet<OwnerAsset>();
         }
     
-        public string UserNameID { get; set; }
-        public bool Employee { get; set; }
-        public int RoleID { get; set; }
+        public int OwnerID { get; set; }
+        public string UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MainPhoneNumber { get; set; }
@@ -36,6 +35,6 @@ namespace Dogue.EF.DATA
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OwnerAsset> OwnerAssets { get; set; }
-        public virtual Role Role { get; set; }
+        public virtual SiteUser SiteUser { get; set; }
     }
 }

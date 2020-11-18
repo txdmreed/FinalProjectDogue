@@ -1,0 +1,128 @@
+﻿@model Dogue.EF.DATA.OwnerAsset
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>OwnerAsset</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetRegisteredName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssetRegisteredName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetCallName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssetCallName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetSpecies)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssetSpecies)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetBreed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssetBreed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssetAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssetSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetTrainerCertified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssetTrainerCertified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssetPhoto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialNotes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateAdded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateAdded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptiveColorProfile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptiveColorProfile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerInformation.UserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerInformation.UserID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
