@@ -416,6 +416,8 @@ h1, h2, h3, h4, h5, h6 {
 #hero .carousel-inner .carousel-item {
   transition-property: opacity;
   background-position: center top;
+  background-size: fluid;
+  
 }
 
 #hero .carousel-inner .carousel-item,

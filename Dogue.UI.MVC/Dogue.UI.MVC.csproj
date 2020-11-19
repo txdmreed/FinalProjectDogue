@@ -182,6 +182,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -212,10 +213,10 @@
     <Content Include="Content\assets\img\portfolio\portfolio-details-1.jpg" />
     <Content Include="Content\assets\img\portfolio\portfolio-details-2.jpg" />
     <Content Include="Content\assets\img\portfolio\portfolio-details-3.jpg" />
-    <Content Include="Content\assets\img\Slider\Dogue-highres-2217x2639 %281%29.png" />
-    <Content Include="Content\assets\img\Slider\Dogue-highres-2217x2639.png" />
-    <Content Include="Content\assets\img\Slider\DogueFaithV3.png" />
-    <Content Include="Content\assets\img\Slider\DougeFaithV3.jpg" />
+    <Content Include="Content\assets\img\Slider\BuffyNFaith1 %281%29.png" />
+    <Content Include="Content\assets\img\Slider\BuffyNFaith1.png" />
+    <Content Include="Content\assets\img\Slider\Colby-highres-1x.png" />
+    <Content Include="Content\assets\img\Slider\Dogue-.5-1109x1320-web.png" />
     <Content Include="Content\assets\img\slide\slide-1.jpg" />
     <Content Include="Content\assets\img\slide\slide-2.jpg" />
     <Content Include="Content\assets\img\slide\slide-3.jpg" />

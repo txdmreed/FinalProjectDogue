@@ -125,7 +125,7 @@ namespace Dogue.EF.DATA
         [StringLength(13, ErrorMessage = "*13 Character limit reached.")]
         public string SecondaryPhoneNumber { get; set; }
         [Required]
-        [Display(Name = "Main Phone Number")]
+        [Display(Name = "Email")]
         [RegularExpression("Email", ErrorMessage = "*Valid Email Required: email@example.com")]
         [StringLength(50, ErrorMessage = "*50 Character limit reached.")]
         public string Email { get; set; }
