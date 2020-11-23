@@ -68,6 +68,8 @@ namespace Dogue.UI.MVC.Models
    
     public class RegisterViewModel
     {
+        [Required]
+        public string Email { get; set; }
 
         [Required]
         [Display(Name = "User Name")]

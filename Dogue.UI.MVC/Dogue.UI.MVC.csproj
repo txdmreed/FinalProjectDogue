@@ -369,6 +369,8 @@
     <Content Include="Views\OwnerInformations\Details.cshtml" />
     <Content Include="Views\OwnerInformations\Edit.cshtml" />
     <Content Include="Views\OwnerInformations\Index.cshtml" />
+    <Content Include="Views\Home\Portfolio.cshtml" />
+    <Content Include="Views\Manage\AdminMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dogue.EF.DATA\Dogue.EF.DATA.csproj">

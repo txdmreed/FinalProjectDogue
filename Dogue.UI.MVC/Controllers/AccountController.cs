@@ -150,7 +150,7 @@ namespace Dogue.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.UserName};
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -163,11 +163,14 @@ namespace Dogue.UI.MVC.Controllers
                     newSiteUser.UserID = user.Id;
                     newSiteUser.FirstName = model.FirstName;
                     newSiteUser.LastName = model.LastName;
+                    newSiteUser.UserName = model.UserName;
 
                     DogueFinalProjectEntities db = new DogueFinalProjectEntities();
                     db.SiteUsers.Add(newSiteUser);
                     db.SaveChanges();
-                    TempData["message"] = "You have successfully registered.  Please, fill out the Owner Information.  Upon successful entry, you will be redirected to Asset Registration for the Animal Client.  Thank you.";
+                    UserManager.AddToRole(user.Id, "Client");
+                    //TempData["message"] = "You have successfully registered.  Please, fill out the Owner Information.  Upon successful entry, you will be redirected to Asset Registration for the Animal Client.  Thank you.";
+
                     return RedirectToAction("Create", "OwnerInformations");
                 }
                 AddErrors(result);

@@ -130,6 +130,7 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FirstName" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -400,6 +401,7 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="OwnerInformations" Relationship="DogueFinalProjectModel.FK_OwnerInformation_SiteUsers" FromRole="SiteUser" ToRole="OwnerInformation" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -649,6 +651,7 @@
           <EntitySetMapping Name="SiteUsers">
             <EntityTypeMapping TypeName="DogueFinalProjectModel.SiteUser">
               <MappingFragment StoreEntitySet="SiteUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />

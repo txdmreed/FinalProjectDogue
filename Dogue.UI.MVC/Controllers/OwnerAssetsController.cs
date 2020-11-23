@@ -41,7 +41,7 @@ namespace Dogue.UI.MVC.Controllers
         // GET: OwnerAssets/Create
         public ActionResult Create()
         {
-            ViewBag.OwnerID = new SelectList(db.OwnerInformations, "OwnerID", "UserID");
+            ViewBag.OwnerID = new SelectList(db.OwnerInformations, "OwnerID", "FirstName");
             return View();
         }
 
@@ -56,11 +56,11 @@ namespace Dogue.UI.MVC.Controllers
             {
                 db.OwnerAssets.Add(ownerAsset);
                 db.SaveChanges();
-                TempData["ThankMessage"] = "Thank you. You have successfully completed full registration.  You may now take advanatage of all our client privileges.";
+                //TempData["ThankMessage"] = "Thank you. You have successfully completed full registration.  You may now take advanatage of all our client privileges.";
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OwnerID = new SelectList(db.OwnerInformations, "OwnerID", "UserID", ownerAsset.OwnerID);
+            ViewBag.OwnerID = new SelectList(db.OwnerInformations, "OwnerID", "FirstName", ownerAsset.OwnerID);
             return View(ownerAsset);
         }
 

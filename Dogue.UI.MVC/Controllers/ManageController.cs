@@ -33,8 +33,11 @@ namespace Dogue.UI.MVC.Controllers
                 _userManager = value;
             }
         }
+        public ActionResult AdminMenu()
+        {
 
-        //
+            return View();
+        }        //
         // GET: /Account/Index
         [HttpGet]
         public async Task<ActionResult> Index(ManageMessageId? message)

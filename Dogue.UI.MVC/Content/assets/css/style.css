@@ -11,6 +11,8 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  margin:1px;
+  margin-top:80px;
 }
 
 a {
@@ -81,6 +83,9 @@ h1, h2, h3, h4, h5, h6 {
 
 #header .logo img {
   max-height: 40px;
+}
+.clear {
+    clear:both;
 }
 
 /*--------------------------------------------------------------

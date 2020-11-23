@@ -54,7 +54,7 @@ namespace Dogue.UI.MVC.Controllers
             {
                 db.OwnerInformations.Add(ownerInformation);
                 db.SaveChanges();
-                TempData["assetMessage"] = "You have successfully entered your Owner Information.  Please fill in the information below for the Animal Client.";
+                //TempData["assetMessage"] = "You have successfully entered your Owner Information.  Please fill in the information below for the Animal Client.";
                 return RedirectToAction("Create", "OwnerAssets");
             }
 

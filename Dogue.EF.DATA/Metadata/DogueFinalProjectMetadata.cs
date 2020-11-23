@@ -42,7 +42,7 @@ namespace Dogue.EF.DATA
         [Display(Name = "Client Animal Quick Look")]
         public string AssetInfo
         {
-            get { return string.Format("{0} -- {1} -- {2} -- (3}", AssetSpecies, AssetCallName, (AssetTrainerCertified == true) ? "Training Certified" : "Training Unknown", AssetSize);}
+            get { return string.Format("{0} -- {1} -- {2} -- {3}", AssetSpecies, AssetCallName, (AssetTrainerCertified == true) ? "Training Certified" : "Training Unknown", AssetSize);}
         }
     }
 
@@ -68,9 +68,8 @@ namespace Dogue.EF.DATA
         [StringLength(50, ErrorMessage = "*50 Character limit reached. Please, contact system adminisistrator if more room is needed.")]
         [Display(Name = "Age")]
         public string AssetAge { get; set; }
-        [Required]
-        [Range(0, 200, ErrorMessage = "Invalid Value")]
-        [Display(Name = "Size (see table for breakdown)")]
+        [Required]        
+        [Display(Name = "Size")]
         public string AssetSize { get; set; }
         [Display(Name ="Trainer Certified")]
         public bool AssetTrainerCertified { get; set; }
@@ -116,17 +115,17 @@ namespace Dogue.EF.DATA
         public string LastName { get; set; }
         [Required]
         [Display(Name = "Main Phone Number")]
-        [RegularExpression("phone", ErrorMessage ="*Valid Phone Number Required: 123-456-789")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "*Valid Phone Number Required: 123-456-789")]
         [StringLength(13, ErrorMessage = "*13 Character limit reached. Please.")]
         public string MainPhoneNumber { get; set; }
         [DisplayFormat(NullDisplayText = "*Not Available")]
         [Display(Name = "Secondary Phone Number")]
-        [RegularExpression("phone", ErrorMessage = "*Valid Phone Number Required: 123-456-789")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "*Valid Phone Number Required: 123-456-789")]
         [StringLength(13, ErrorMessage = "*13 Character limit reached.")]
         public string SecondaryPhoneNumber { get; set; }
         [Required]
         [Display(Name = "Email")]
-        [RegularExpression("Email", ErrorMessage = "*Valid Email Required: email@example.com")]
+        [EmailAddress (ErrorMessage = "*Valid Email Required: email@example.com")]
         [StringLength(50, ErrorMessage = "*50 Character limit reached.")]
         public string Email { get; set; }
         [Required]
@@ -163,15 +162,16 @@ namespace Dogue.EF.DATA
 
     public class SiteUserMetaData
     {
-        [Required]
-        [Display(Name = "User Name")]
-        public string UserID { get; set; }
+
         [Required]
         [Display(Name ="First Name")]
         public string FirstName { get; set; }
         [Required]
         [Display(Name ="Last Name")]
         public string LastName { get; set; }
+        [Required]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
 
     }
 

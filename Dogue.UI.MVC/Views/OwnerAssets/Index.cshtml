@@ -1,36 +1,18 @@
 ﻿@model IEnumerable<Dogue.EF.DATA.OwnerAsset>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Owner Asset Information";
 }
 
-<h2>Index</h2>
-@TempData["ThankMessage"];
+<h2>Animal Client Information</h2>
+@TempData["ThankMessage"]
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AssetRegisteredName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssetCallName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssetSpecies)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssetBreed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssetAge)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssetSize)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssetTrainerCertified)
+            @Html.DisplayNameFor(model => model.AssetInfo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AssetPhoto)
@@ -44,38 +26,15 @@
         <th>
             @Html.DisplayNameFor(model => model.DateAdded)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DescriptiveColorProfile)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OwnerInformation.UserID)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.AssetRegisteredName)
+            @Html.DisplayFor(modelItem => item.AssetInfo)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssetCallName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssetSpecies)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssetBreed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssetAge)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssetSize)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssetTrainerCertified)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.AssetPhoto)
         </td>
@@ -88,16 +47,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.DateAdded)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.DescriptiveColorProfile)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OwnerInformation.UserID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OwnerAssetID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OwnerAssetID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OwnerAssetID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.OwnerAssetID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
         </td>
     </tr>
 }

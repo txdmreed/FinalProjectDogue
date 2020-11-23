@@ -23,6 +23,7 @@ namespace Dogue.EF.DATA
         public string UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string UserName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OwnerInformation> OwnerInformations { get; set; }

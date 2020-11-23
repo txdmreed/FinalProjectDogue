@@ -26,6 +26,12 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         [HttpGet]
+        public ActionResult Portfolio()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult Contact()
         {
 
