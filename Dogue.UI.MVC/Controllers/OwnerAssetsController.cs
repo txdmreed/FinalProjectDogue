@@ -41,7 +41,7 @@ namespace Dogue.UI.MVC.Controllers
         // GET: OwnerAssets/Create
         public ActionResult Create()
         {
-            ViewBag.OwnerID = new SelectList(db.OwnerInformations, "OwnerID", "FirstName");
+            ViewBag.UserID = new SelectList(db.OwnerInformations, "UserID", "FullName");
             return View();
         }
 
@@ -50,7 +50,7 @@ namespace Dogue.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OwnerAssetID,AssetRegisteredName,AssetCallName,AssetSpecies,AssetBreed,AssetAge,AssetSize,AssetTrainerCertified,OwnerID,AssetPhoto,SpecialNotes,IsActive,DateAdded,DescriptiveColorProfile")] OwnerAsset ownerAsset)
+        public ActionResult Create([Bind(Include = "OwnerAssetID,AssetRegisteredName,AssetCallName,AssetSpecies,AssetBreed,AssetAge,AssetSize,AssetTrainerCertified,UserID,AssetPhoto,SpecialNotes,IsActive,DateAdded,DescriptiveColorProfile")] OwnerAsset ownerAsset)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace Dogue.UI.MVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OwnerID = new SelectList(db.OwnerInformations, "OwnerID", "FirstName", ownerAsset.OwnerID);
+            ViewBag.UserID = new SelectList(db.OwnerInformations, "UserID", "FullName", ownerAsset.UserID);
             return View(ownerAsset);
         }
 
@@ -111,7 +111,7 @@ namespace Dogue.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.OwnerID = new SelectList(db.OwnerInformations, "OwnerID", "UserID", ownerAsset.OwnerID);
+            ViewBag.UserID = new SelectList(db.OwnerInformations, "UserID", "FullName", ownerAsset.UserID);
             return View(ownerAsset);
         }
 
@@ -120,7 +120,7 @@ namespace Dogue.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OwnerAssetID,AssetRegisteredName,AssetCallName,AssetSpecies,AssetBreed,AssetAge,AssetSize,AssetTrainerCertified,OwnerID,AssetPhoto,SpecialNotes,IsActive,DateAdded,DescriptiveColorProfile")] OwnerAsset ownerAsset)
+        public ActionResult Edit([Bind(Include = "OwnerAssetID,AssetRegisteredName,AssetCallName,AssetSpecies,AssetBreed,AssetAge,AssetSize,AssetTrainerCertified,UserID,AssetPhoto,SpecialNotes,IsActive,DateAdded,DescriptiveColorProfile")] OwnerAsset ownerAsset)
         {
             if (ModelState.IsValid)
             {
@@ -128,11 +128,12 @@ namespace Dogue.UI.MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OwnerID = new SelectList(db.OwnerInformations, "OwnerID", "UserID", ownerAsset.OwnerID);
+            ViewBag.UserID = new SelectList(db.OwnerInformations, "UserID", "FullName", ownerAsset.UserID);
             return View(ownerAsset);
         }
 
         // GET: OwnerAssets/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -148,6 +149,7 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         // POST: OwnerAssets/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

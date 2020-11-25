@@ -175,7 +175,6 @@
     <Compile Include="Controllers\OwnerInformationsController.cs" />
     <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
-    <Compile Include="Controllers\SiteUsersController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,8 +214,19 @@
     <Content Include="Content\assets\img\portfolio\portfolio-details-3.jpg" />
     <Content Include="Content\assets\img\Slider\BuffyNFaith1 %281%29.png" />
     <Content Include="Content\assets\img\Slider\BuffyNFaith1.png" />
+    <Content Include="Content\assets\img\Slider\BuffyPuppyPic1.png" />
     <Content Include="Content\assets\img\Slider\Colby-highres-1x.png" />
+    <Content Include="Content\assets\img\Slider\Dogue-.5-1109x1320-web %281%29.png" />
     <Content Include="Content\assets\img\Slider\Dogue-.5-1109x1320-web.png" />
+    <Content Include="Content\assets\img\Slider\Dogue-buffy-hr-1x %281%29.png" />
+    <Content Include="Content\assets\img\Slider\Dogue-buffy-hr-1x %282%29.png" />
+    <Content Include="Content\assets\img\Slider\Dogue-buffy-hr-1x %283%29.png" />
+    <Content Include="Content\assets\img\Slider\Dogue-faith-window.png" />
+    <Content Include="Content\assets\img\Slider\Dogue-faithandbuffy3-hr-1x %281%29.png" />
+    <Content Include="Content\assets\img\Slider\Dogue-nehi-hr-1x %281%29.png" />
+    <Content Include="Content\assets\img\Slider\FaithWindow %281%29.png" />
+    <Content Include="Content\assets\img\Slider\FaithWindow.png" />
+    <Content Include="Content\assets\img\Slider\NehiBabyPic.png" />
     <Content Include="Content\assets\img\slide\slide-1.jpg" />
     <Content Include="Content\assets\img\slide\slide-2.jpg" />
     <Content Include="Content\assets\img\slide\slide-3.jpg" />
@@ -299,7 +309,6 @@
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
@@ -322,25 +331,12 @@
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\assets\vendor\bootstrap\css\bootstrap-grid.css.map" />
-    <Content Include="Content\assets\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
-    <Content Include="Content\assets\vendor\bootstrap\css\bootstrap-reboot.css.map" />
-    <Content Include="Content\assets\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\assets\vendor\bootstrap\css\bootstrap.css.map" />
-    <Content Include="Content\assets\vendor\bootstrap\css\bootstrap.min.css.map" />
-    <Content Include="Content\assets\vendor\bootstrap\js\bootstrap.bundle.js.map" />
-    <Content Include="Content\assets\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
-    <Content Include="Content\assets\vendor\bootstrap\js\bootstrap.js.map" />
-    <Content Include="Content\assets\vendor\bootstrap\js\bootstrap.min.js.map" />
     <Content Include="Content\assets\vendor\boxicons\fonts\boxicons.eot" />
     <Content Include="Content\assets\vendor\boxicons\fonts\boxicons.ttf" />
     <Content Include="Content\assets\vendor\boxicons\fonts\boxicons.woff" />
     <Content Include="Content\assets\vendor\boxicons\fonts\boxicons.woff2" />
     <Content Include="Content\assets\vendor\icofont\fonts\icofont.woff" />
     <Content Include="Content\assets\vendor\icofont\fonts\icofont.woff2" />
-    <Content Include="Content\assets\vendor\jquery\jquery.min.map" />
-    <Content Include="Content\assets\vendor\owl.carousel\LICENSE" />
-    <Content Include="Content\assets\vendor\owl.carousel\README.md" />
     <Content Include="fonts\Vogue.ttf" />
     <None Include="packages.config" />
     <Content Include="Views\Home\portfolio_details.cshtml" />
@@ -354,16 +350,6 @@
     <Content Include="Views\OwnerAssets\Details.cshtml" />
     <Content Include="Views\OwnerAssets\Edit.cshtml" />
     <Content Include="Views\OwnerAssets\Index.cshtml" />
-    <Content Include="Views\Reservations\Create.cshtml" />
-    <Content Include="Views\Reservations\Delete.cshtml" />
-    <Content Include="Views\Reservations\Details.cshtml" />
-    <Content Include="Views\Reservations\Edit.cshtml" />
-    <Content Include="Views\Reservations\Index.cshtml" />
-    <Content Include="Views\SiteUsers\Create.cshtml" />
-    <Content Include="Views\SiteUsers\Delete.cshtml" />
-    <Content Include="Views\SiteUsers\Details.cshtml" />
-    <Content Include="Views\SiteUsers\Edit.cshtml" />
-    <Content Include="Views\SiteUsers\Index.cshtml" />
     <Content Include="Views\OwnerInformations\Create.cshtml" />
     <Content Include="Views\OwnerInformations\Delete.cshtml" />
     <Content Include="Views\OwnerInformations\Details.cshtml" />
@@ -371,6 +357,12 @@
     <Content Include="Views\OwnerInformations\Index.cshtml" />
     <Content Include="Views\Home\Portfolio.cshtml" />
     <Content Include="Views\Manage\AdminMenu.cshtml" />
+    <Content Include="Views\Reservations\Create.cshtml" />
+    <Content Include="Views\Reservations\Delete.cshtml" />
+    <Content Include="Views\Reservations\Details.cshtml" />
+    <Content Include="Views\Reservations\Edit.cshtml" />
+    <Content Include="Views\Reservations\Index.cshtml" />
+    <Content Include="Views\Home\ClientMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dogue.EF.DATA\Dogue.EF.DATA.csproj">

@@ -42,7 +42,7 @@ namespace Dogue.EF.DATA
         [Display(Name = "Client Animal Quick Look")]
         public string AssetInfo
         {
-            get { return string.Format("{0} -- {1} -- {2} -- {3}", AssetSpecies, AssetCallName, (AssetTrainerCertified == true) ? "Training Certified" : "Training Unknown", AssetSize);}
+            get { return string.Format("Species: {0} -- Call Name: {1} -- {2} -- Size Profile: {3}", AssetSpecies, AssetCallName, (AssetTrainerCertified == true) ? "Training Certified" : "Training Unknown", AssetSize); }
         }
     }
 
@@ -68,19 +68,17 @@ namespace Dogue.EF.DATA
         [StringLength(50, ErrorMessage = "*50 Character limit reached. Please, contact system adminisistrator if more room is needed.")]
         [Display(Name = "Age")]
         public string AssetAge { get; set; }
-        [Required]        
+        [Required]
         [Display(Name = "Size")]
         public string AssetSize { get; set; }
-        [Display(Name ="Trainer Certified")]
+        [Display(Name = "Trainer Certified")]
         public bool AssetTrainerCertified { get; set; }
-        [Required]
-        public int OwnerID { get; set; }
         [DisplayFormat(NullDisplayText = "*Not Available")]
         public byte[] AssetPhoto { get; set; }
         [DisplayFormat(NullDisplayText = "*Not Available")]
         [UIHint("MulilineText")]
         public string SpecialNotes { get; set; }
-        [Display(Name ="Active")]
+        [Display(Name = "Active")]
         public bool IsActive { get; set; }
         [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
@@ -125,7 +123,7 @@ namespace Dogue.EF.DATA
         public string SecondaryPhoneNumber { get; set; }
         [Required]
         [Display(Name = "Email")]
-        [EmailAddress (ErrorMessage = "*Valid Email Required: email@example.com")]
+        [EmailAddress(ErrorMessage = "*Valid Email Required: email@example.com")]
         [StringLength(50, ErrorMessage = "*50 Character limit reached.")]
         public string Email { get; set; }
         [Required]
@@ -139,46 +137,48 @@ namespace Dogue.EF.DATA
         public string State { get; set; }
         [Required]
         [StringLength(10, ErrorMessage = "*10 Character limit reached.")]
+        [Display(Name = "Zip Code")]
         public string ZipCode { get; set; }
-        [Display(Name ="Payment Options Up-To-Date")]
-        public bool TransactionFileUpToDate { get; set; }
+
     }
 
     [MetadataType(typeof(ReservationMetaData))]
-    public partial class Reservation {}
+    public partial class Reservation { }
 
     public class ReservationMetaData
     {
-        public int OwnerAssetID { get; set; }
+        [Required]
         public int LocationID { get; set; }
         [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
-        [Display(Name = "Date Added")]
+        [Display(Name = "Reservation Date")]
         public System.DateTime ReservationDate { get; set; }
 
     }
-   [MetadataType(typeof(SiteUserMetaData))]
-   public partial class SiteUser { }
+    [MetadataType(typeof(ServiceMetaData))]
+    public partial class Service { }
 
-    public class SiteUserMetaData
-    {
 
+    public class ServiceMetaData
+    {    
         [Required]
-        [Display(Name ="First Name")]
-        public string FirstName { get; set; }
-        [Required]
-        [Display(Name ="Last Name")]
-        public string LastName { get; set; }
-        [Required]
-        [Display(Name = "User Name")]
-        public string UserName { get; set; }
-
+        [Display(Name = "Service")]
+        public string ServiceName { get; set; }
     }
 
+    [MetadataType(typeof(PhotoMetaData))]
+    public partial class Photo {}
 
+    public class PhotoMetaData
+    {
+        public string Title { get; set; }
+        public byte[] PhotoUrl { get; set; }
+        public string filter { get; set; }
+        [Required]
+        [Display(Name = "Owner Asset ID")]
+        public int OwnerAssetID { get; set; }
 
-
-
+    }
 
 
 

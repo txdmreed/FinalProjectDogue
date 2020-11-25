@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Client Menu";
+}
+
+
+<h2 class="centerMe">@ViewBag.Title</h2>
+
+<div class="gContainer">
+    <div class="gContent">
+        <h2 id="cardTitle">Client Information</h2>
+        <p><a href="@Url.Action("Index","OwnerInformations")">Owner Information</a></p>
+        <p><a href="@Url.Action("Index", "OwnerAssets")">Animal Client Information</a></p>
+    </div>
+</div>
+<div class="gContainer">
+    <div class="gContent">
+        <h2 id="cardTitle">Portfolio</h2>
+
+    </div>
+</div>
+<div class="gContainer">
+    <div class="gContent">
+        <h2 id="cardTitle">Reservations</h2>
+        <p><a href="@Url.Action("Index","Reservations")">Reservation Menu</a></p>
+    </div>
+</div>
+<hr />

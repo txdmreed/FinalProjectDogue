@@ -150,7 +150,7 @@ namespace Dogue.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -159,19 +159,27 @@ namespace Dogue.UI.MVC.Controllers
                     //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                     //ViewBag.Link = callbackUrl;
                     //return View("DisplayEmail");
-                    SiteUser newSiteUser = new SiteUser();
+                    OwnerInformation newSiteUser = new OwnerInformation();
                     newSiteUser.UserID = user.Id;
                     newSiteUser.FirstName = model.FirstName;
                     newSiteUser.LastName = model.LastName;
-                    newSiteUser.UserName = model.UserName;
+                    newSiteUser.Email = model.Email;
+                    newSiteUser.MainPhoneNumber = model.MainPhoneNumber;
+                    newSiteUser.SecondaryPhoneNumber = model.SecondaryPhoneNumber;
+                    newSiteUser.Address = model.Address;
+                    newSiteUser.City = model.City;
+                    newSiteUser.State = model.State;
+                    newSiteUser.ZipCode = model.ZipCode;
 
                     DogueFinalProjectEntities db = new DogueFinalProjectEntities();
-                    db.SiteUsers.Add(newSiteUser);
+                    db.OwnerInformations.Add(newSiteUser);
+
                     db.SaveChanges();
                     UserManager.AddToRole(user.Id, "Client");
-                    //TempData["message"] = "You have successfully registered.  Please, fill out the Owner Information.  Upon successful entry, you will be redirected to Asset Registration for the Animal Client.  Thank you.";
 
-                    return RedirectToAction("Create", "OwnerInformations");
+                    //ViewBag.RegisterMessage("Thank you, for registering with the Dogue Client Portal.  You're halfway there.  Please, fill in the following information for the animal client.");
+
+                    return RedirectToAction("Create", "OwnerAssets");
                 }
                 AddErrors(result);
             }

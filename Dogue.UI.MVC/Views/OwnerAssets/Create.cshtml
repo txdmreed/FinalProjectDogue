@@ -1,10 +1,10 @@
 ﻿@model Dogue.EF.DATA.OwnerAsset
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Client Animal File Creation";
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,9 +12,12 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>OwnerAsset</h4>
-    <!--TempData["assetMessage"].ToString();-->
-    <!--TempData["PhotoMessage"].ToString();-->
+   
+    @if (ViewBag.RegisterMessage != null)
+    {
+    @ViewBag.RegisterMessage();
+    }
+ 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(model => model.AssetRegisteredName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -75,10 +78,10 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.OwnerID, "Owner ID", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.UserID, "Owner ID", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("OwnerID", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.OwnerID, "", new { @class = "text-danger" })
+            @Html.DropDownList("UserID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
         </div>
     </div>
 

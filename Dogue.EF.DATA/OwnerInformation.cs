@@ -20,7 +20,6 @@ namespace Dogue.EF.DATA
             this.OwnerAssets = new HashSet<OwnerAsset>();
         }
     
-        public int OwnerID { get; set; }
         public string UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -31,10 +30,8 @@ namespace Dogue.EF.DATA
         public string City { get; set; }
         public string State { get; set; }
         public string ZipCode { get; set; }
-        public bool TransactionFileUpToDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OwnerAsset> OwnerAssets { get; set; }
-        public virtual SiteUser SiteUser { get; set; }
     }
 }

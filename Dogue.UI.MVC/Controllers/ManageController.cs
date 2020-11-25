@@ -33,6 +33,8 @@ namespace Dogue.UI.MVC.Controllers
                 _userManager = value;
             }
         }
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminMenu()
         {
 

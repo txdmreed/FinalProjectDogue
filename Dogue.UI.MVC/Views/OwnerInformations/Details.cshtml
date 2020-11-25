@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>OwnerInformation</h4>
+    <h4>Owner Information</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -81,26 +81,20 @@
         <dd>
             @Html.DisplayFor(model => model.ZipCode)
         </dd>
-
+       @if (User.IsInRole("Admin, Employee"))
+       {
         <dt>
-            @Html.DisplayNameFor(model => model.TransactionFileUpToDate)
+            @Html.DisplayNameFor(model => model.Employee)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TransactionFileUpToDate)
+            @Html.DisplayFor(model => model.Employee)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SiteUser.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SiteUser.FirstName)
-        </dd>
+       }
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.OwnerID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

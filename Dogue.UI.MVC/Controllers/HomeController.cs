@@ -37,6 +37,11 @@ namespace Dogue.UI.MVC.Controllers
 
             return View();
         }
+        [HttpGet]
+        public ActionResult ClientMenu()
+        {
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]

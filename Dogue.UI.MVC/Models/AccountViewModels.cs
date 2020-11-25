@@ -72,10 +72,6 @@ namespace Dogue.UI.MVC.Models
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "User Name")]
-        public string UserName { get; set; }
-
-        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -94,6 +90,35 @@ namespace Dogue.UI.MVC.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Required]
+        [Display(Name = "Main Phone Number")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "*Valid Phone Number Required: 123-456-789")]
+        [StringLength(13, ErrorMessage = "*13 Character limit reached. Please.")]
+        public string MainPhoneNumber { get; set; }
+
+        [DisplayFormat(NullDisplayText = "*Not Available")]
+        [Display(Name = "Secondary Phone Number")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "*Valid Phone Number Required: 123-456-789")]
+        [StringLength(13, ErrorMessage = "*13 Character limit reached.")]
+        public string SecondaryPhoneNumber { get; set; } 
+        
+        [Required]
+        [StringLength(50, ErrorMessage = "*50 Character limit reached.")]
+        public string Address { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "*50 Character limit reached.")]
+        public string City { get; set; }
+
+        [Required]
+        [StringLength(2, ErrorMessage = "*2 Character limit reached.")]
+        public string State { get; set; }
+
+        [Required]
+        [StringLength(10, ErrorMessage = "*10 Character limit reached.")]
+        [Display(Name = "Zip Code")]
+        public string ZipCode { get; set; }
+
     }
 
     public class ResetPasswordViewModel
@@ -101,7 +126,6 @@ namespace Dogue.UI.MVC.Models
         [Required]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
-
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

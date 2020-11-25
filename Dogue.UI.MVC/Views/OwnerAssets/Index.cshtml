@@ -3,11 +3,23 @@
 @{
     ViewBag.Title = "Owner Asset Information";
 }
-
-<h2>Animal Client Information</h2>
-@TempData["ThankMessage"]
+<h2 class="centerMe">Animal Client Information</h2>
+@if (TempData["ThankMessage"] != null)
+{
+    TempData["ThankMessage"].ToString();
+}
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "OwnerAssets") |
+
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Return to Admin Menu", "AdminMenu", "Manage")
+
+    }
+    else
+    {
+        @Html.ActionLink("Return to Client Menu", "ClientMenu", "Home")
+    }
 </p>
 <table class="table">
     <tr>
@@ -29,31 +41,35 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssetInfo)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssetInfo)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.AssetPhoto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SpecialNotes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateAdded)
-        </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssetPhoto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.OwnerAssetID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OwnerAssetID }) |
+                @if (User.IsInRole("Admin"))
+                {
+                @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
+                }
+            </td>
+        </tr>
+    }
 
 </table>

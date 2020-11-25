@@ -3,11 +3,11 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
+<h2 class="centerMe">Users Manager</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Register New User", "Register", "Account") | 
+    @Html.ActionLink("Return to Admin Menu", "AdminMenu", "Manage")
 </p>
 <table class="table">
     <tr>

@@ -17,12 +17,12 @@ namespace Dogue.UI.MVC.Controllers
         // GET: OwnerInformations
         public ActionResult Index()
         {
-            var ownerInformations = db.OwnerInformations.Include(o => o.SiteUser);
+            var ownerInformations = db.OwnerInformations;
             return View(ownerInformations.ToList());
         }
 
         // GET: OwnerInformations/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -39,7 +39,7 @@ namespace Dogue.UI.MVC.Controllers
         // GET: OwnerInformations/Create
         public ActionResult Create()
         {
-            ViewBag.UserID = new SelectList(db.SiteUsers, "UserID", "FirstName");
+            ViewBag.UserID = new SelectList(db.OwnerInformations, "UserID", "FullName");
             return View();
         }
 
@@ -48,7 +48,7 @@ namespace Dogue.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OwnerID,UserID,FirstName,LastName,MainPhoneNumber,SecondaryPhoneNumber,Email,Address,City,State,ZipCode,TransactionFileUpToDate")] OwnerInformation ownerInformation)
+        public ActionResult Create([Bind(Include = "UserID,FirstName,LastName,MainPhoneNumber,SecondaryPhoneNumber,Email,Address,City,State,ZipCode")] OwnerInformation ownerInformation)
         {
             if (ModelState.IsValid)
             {
@@ -58,12 +58,13 @@ namespace Dogue.UI.MVC.Controllers
                 return RedirectToAction("Create", "OwnerAssets");
             }
 
-            ViewBag.UserID = new SelectList(db.SiteUsers, "UserID", "FirstName", ownerInformation.UserID);
+            ViewBag.UserID = new SelectList(db.OwnerInformations, "UserID", "FullName", ownerInformation.UserID);
             return View(ownerInformation);
         }
 
         // GET: OwnerInformations/Edit/5
-        public ActionResult Edit(int? id)
+        [HttpGet]
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -74,7 +75,7 @@ namespace Dogue.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.UserID = new SelectList(db.SiteUsers, "UserID", "FirstName", ownerInformation.UserID);
+            ViewBag.UserID = new SelectList(db.OwnerInformations, "UserID", "FullName", ownerInformation.UserID);
             return View(ownerInformation);
         }
 
@@ -83,7 +84,7 @@ namespace Dogue.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OwnerID,UserID,FirstName,LastName,MainPhoneNumber,SecondaryPhoneNumber,Email,Address,City,State,ZipCode,TransactionFileUpToDate")] OwnerInformation ownerInformation)
+        public ActionResult Edit([Bind(Include = "UserID,FirstName,LastName,MainPhoneNumber,SecondaryPhoneNumber,Email,Address,City,State,ZipCode")] OwnerInformation ownerInformation)
         {
             if (ModelState.IsValid)
             {
@@ -91,12 +92,12 @@ namespace Dogue.UI.MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserID = new SelectList(db.SiteUsers, "UserID", "FirstName", ownerInformation.UserID);
+            ViewBag.UserID = new SelectList(db.OwnerInformations, "UserID", "FullName", ownerInformation.UserID);
             return View(ownerInformation);
         }
 
         // GET: OwnerInformations/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -113,7 +114,7 @@ namespace Dogue.UI.MVC.Controllers
         // POST: OwnerInformations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             OwnerInformation ownerInformation = db.OwnerInformations.Find(id);
             db.OwnerInformations.Remove(ownerInformation);

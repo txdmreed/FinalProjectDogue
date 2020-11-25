@@ -17,6 +17,7 @@ namespace Dogue.EF.DATA
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public OwnerAsset()
         {
+            this.Photos = new HashSet<Photo>();
             this.Reservations = new HashSet<Reservation>();
         }
     
@@ -28,15 +29,17 @@ namespace Dogue.EF.DATA
         public string AssetAge { get; set; }
         public string AssetSize { get; set; }
         public bool AssetTrainerCertified { get; set; }
-        public int OwnerID { get; set; }
+        public string UserID { get; set; }
         public byte[] AssetPhoto { get; set; }
         public string SpecialNotes { get; set; }
         public bool IsActive { get; set; }
         public System.DateTime DateAdded { get; set; }
         public string DescriptiveColorProfile { get; set; }
     
+        public virtual OwnerInformation OwnerInformation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Photo> Photos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservations { get; set; }
-        public virtual OwnerInformation OwnerInformation { get; set; }
     }
 }

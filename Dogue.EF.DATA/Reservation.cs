@@ -18,8 +18,10 @@ namespace Dogue.EF.DATA
         public int OwnerAssetID { get; set; }
         public int LocationID { get; set; }
         public System.DateTime ReservationDate { get; set; }
+        public int ServiceID { get; set; }
     
         public virtual Location Location { get; set; }
         public virtual OwnerAsset OwnerAsset { get; set; }
+        public virtual Service Service { get; set; }
     }
 }

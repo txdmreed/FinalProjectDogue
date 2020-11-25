@@ -4,10 +4,19 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="centerMe">Reservations</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "Reservations") |
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Return to Admin Menu", "AdminMenu", "Manage")
+
+    }
+    else
+    {
+        @Html.ActionLink("Return to Client Menu", "ClientMenu", "Home")
+    }
 </p>
 <table class="table">
     <tr>
@@ -20,26 +29,36 @@
         <th>
             @Html.DisplayNameFor(model => model.OwnerAsset.AssetRegisteredName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Service.ServiceName)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReservationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location.LocationName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OwnerAsset.AssetRegisteredName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ReservationID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ReservationID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ReservationID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReservationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.LocationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerAsset.AssetRegisteredName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service.ServiceName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ReservationID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ReservationID }) |
+                @if (User.IsInRole("Admin, Agent"))
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ReservationID })
+                }
+            </td>
+        </tr>
+    }
 
-</table>
+    </table>

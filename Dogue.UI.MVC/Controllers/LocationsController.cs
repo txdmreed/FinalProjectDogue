@@ -15,12 +15,14 @@ namespace Dogue.UI.MVC.Controllers
         private DogueFinalProjectEntities db = new DogueFinalProjectEntities();
 
         // GET: Locations
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(db.Locations.ToList());
         }
 
         // GET: Locations/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         // GET: Locations/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +49,7 @@ namespace Dogue.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "LocationID,LocationName,Address,City,State,ZipCode,TrainerReservationLimit,PhotoReservationLimit,GroomerReservationLimit")] Location location)
         {
             if (ModelState.IsValid)
@@ -59,6 +63,7 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         // GET: Locations/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +83,7 @@ namespace Dogue.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "LocationID,LocationName,Address,City,State,ZipCode,TrainerReservationLimit,PhotoReservationLimit,GroomerReservationLimit")] Location location)
         {
             if (ModelState.IsValid)
@@ -90,6 +96,7 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         // GET: Locations/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,6 +112,7 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         // POST: Locations/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

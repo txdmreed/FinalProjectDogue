@@ -4,15 +4,70 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+/*CUSTOM ENTRY*/
+.centerMe {
+    text-align: center;
+}
+.gContainer {
+    height: 225px;
+    border: 3px solid #5c9f24;
+    border-radius: 6px;
+    box-shadow: 5px 5px;
+    padding: 1em;
+    width: 31%;
+    float: left;
+    margin: .5em;
+    margin-top: 4em;
+    margin-bottom: 2em;
+    position: relative; /*For absolute positioning below*/
+    background: #172239;
+}
 
+.gContent {
+    text-align: center;
+}
+.gContent h2{
+    font-size: 2.3vw;
+    color: #F5F5F5;
+}
+.gContent p {
+    font-size: 2vw;
+    line-height: 28px
+}
+
+.gFooterLeft {
+    position: absolute;
+    bottom: .5em;
+    left: .5em;
+}
+
+.gFooterRight {
+    position: absolute;
+    bottom: .5em;
+    right: .5em;
+}
+
+    .gFooterRight a {
+        color: #ffd800;
+    }
+
+#courseName {
+    color: #7bff6c;
+}
+#breadcrumbs {
+    background-color:#FFFFFF;
+    padding-bottom: 0px;
+    margin-top:50px;
+}
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
-  color: #444444;
-  margin:1px;
-  margin-top:80px;
+    font-family: "Raleway", sans-serif;
+    color: #444444;
+    margin: 1px;
+    margin-top: 50px;
+
 }
 
 a {
@@ -25,7 +80,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto", sans-serif;
+    font-family: "Playfair Display", 'Times New Roman';
 }
 
 /*--------------------------------------------------------------
@@ -72,7 +127,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
   line-height: 1;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -114,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(255, 255, 255, 0.7);
   transition: 0.3s;
   font-size: 14px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Playfair Display", 'Times New Roman';
   font-weight: 500;
   padding: 0 4px;
   text-transform: uppercase;
@@ -231,7 +286,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   text-transform: uppercase;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  font-family: "Playfair Display", sans-serif;
   border: 2px solid #5c9f24;
 }
 
@@ -359,7 +414,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 100vh;
+  height: 130vh;
   background-color: rgba(17, 17, 17, 0.8);
   overflow: hidden;
   padding: 0;
@@ -367,7 +422,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero .carousel-item {
   width: 100%;
-  height: 100vh;
+  height: 130vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -421,7 +476,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero .carousel-inner .carousel-item {
   transition-property: opacity;
   background-position: center top;
-  background-size: fluid;
+  background-size: contain;
   
 }
 
@@ -487,7 +542,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .btn-get-started {
-  font-family: "Roboto", sans-serif;
+  font-family: "Playfair Display", sans-serif;
   font-weight: 400;
   font-size: 14px;
   letter-spacing: 1px;
@@ -594,7 +649,7 @@ section {
 }
 
 .about .image {
-  background: url("../img/about.jpg") center center no-repeat;
+  background: url("../img/Slider/Dogue-.5-1109x1320-web (1).png") center center no-repeat;
   background-size: cover;
   min-height: 400px;
 }
@@ -656,7 +711,7 @@ section {
   margin-top: 20px;
   color: #505050;
   font-size: 15px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Raleway", sans-serif;
   transition: ease-in-out 0.3s;
 }
 
@@ -1021,7 +1076,7 @@ section {
   font-size: 42px;
   color: #5c9f24;
   font-weight: 500;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Playfair Display", sans-serif;
   margin-bottom: 20px;
 }
 
@@ -1074,7 +1129,7 @@ section {
   color: #5c9f24;
   font-size: 14px;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: "Playfair Display", sans-serif;
   font-weight: 600;
   transition: 0.3s;
 }
@@ -1130,7 +1185,7 @@ section {
 .faq .faq-list a {
   display: block;
   position: relative;
-  font-family: "Poppins", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 500;
@@ -1490,7 +1545,7 @@ section {
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Playfair Display", sans-serif;
   color: #fff;
 }
 

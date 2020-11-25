@@ -17,7 +17,7 @@ namespace Dogue.UI.MVC.Controllers
         // GET: Reservations
         public ActionResult Index()
         {
-            var reservations = db.Reservations.Include(r => r.Location).Include(r => r.OwnerAsset);
+            var reservations = db.Reservations.Include(r => r.Location).Include(r => r.OwnerAsset).Include(r => r.Service);
             return View(reservations.ToList());
         }
 
@@ -39,9 +39,17 @@ namespace Dogue.UI.MVC.Controllers
         // GET: Reservations/Create
         public ActionResult Create()
         {
-            ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName");
-            ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetRegisteredName");
-            return View();
+            if (User.IsInRole("Admin"))
+            {
+                ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName");
+                ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetCallName");
+                ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName");
+                return View();
+            }
+            else
+            {
+                return View();
+            }
         }
 
         // POST: Reservations/Create
@@ -49,7 +57,7 @@ namespace Dogue.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReservationID,OwnerAssetID,LocationID,ReservationDate")] Reservation reservation)
+        public ActionResult Create([Bind(Include = "ReservationID,OwnerAssetID,LocationID,ReservationDate,ServiceID")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +67,8 @@ namespace Dogue.UI.MVC.Controllers
             }
 
             ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
-            ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetRegisteredName", reservation.OwnerAssetID);
+            ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", reservation.ServiceID);
             return View(reservation);
         }
 
@@ -76,7 +85,8 @@ namespace Dogue.UI.MVC.Controllers
                 return HttpNotFound();
             }
             ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
-            ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetRegisteredName", reservation.OwnerAssetID);
+            ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", reservation.ServiceID);
             return View(reservation);
         }
 
@@ -85,7 +95,7 @@ namespace Dogue.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReservationID,OwnerAssetID,LocationID,ReservationDate")] Reservation reservation)
+        public ActionResult Edit([Bind(Include = "ReservationID,OwnerAssetID,LocationID,ReservationDate,ServiceID")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +104,8 @@ namespace Dogue.UI.MVC.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
-            ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetRegisteredName", reservation.OwnerAssetID);
+            ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", reservation.ServiceID);
             return View(reservation);
         }
 

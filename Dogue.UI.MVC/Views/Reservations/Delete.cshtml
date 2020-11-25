@@ -35,6 +35,14 @@
             @Html.DisplayFor(model => model.OwnerAsset.AssetRegisteredName)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Service.ServiceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Service.ServiceName)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
