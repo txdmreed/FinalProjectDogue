@@ -3,54 +3,56 @@
 @{
     ViewBag.Title = "Delete";
 }
+<div class="container">
+    <h2>Delete</h2>
 
-<h2>Delete</h2>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Reservation</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ReservationDate)
+            </dt>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Reservation</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ReservationDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ReservationDate)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ReservationDate)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Location.LocationName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location.LocationName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Location.LocationName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location.LocationName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.OwnerAsset.AssetRegisteredName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerAsset.AssetRegisteredName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OwnerAsset.AssetRegisteredName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.OwnerAsset.AssetRegisteredName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Service.ServiceName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Service.ServiceName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Service.ServiceName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Service.ServiceName)
-        </dd>
+        </dl>
 
-    </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
 </div>

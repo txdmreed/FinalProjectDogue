@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Dogue.EF.DATA.Photo>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <h2 class="centerMe">Photos Gallery Menu</h2>
+    @if (User.IsInRole("Admin") || User.IsInRole("Photographer"))
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create", "Photos") | @if (User.IsInRole("Admin"))
+            {@Html.ActionLink("Return to Admin Menu", "AdminMenu", "Manage")}
+        else
+        { @Html.ActionLink("Return to Contractor Menu", "ClientMenu", "Home")}
+        </p>
+    }
+    <table id="datatable" class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhotoUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Filter.FilterName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OwnerAsset.AssetRegisteredName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhotoUrl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Filter.FilterName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OwnerAsset.AssetRegisteredName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PhotoID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.PhotoID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PhotoID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

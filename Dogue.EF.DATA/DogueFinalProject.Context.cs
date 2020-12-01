@@ -25,16 +25,18 @@ namespace Dogue.EF.DATA
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Filter> Filters { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<OwnerAsset> OwnerAssets { get; set; }
-        public virtual DbSet<OwnerInformation> OwnerInformations { get; set; }
         public virtual DbSet<Photo> Photos { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
         public virtual DbSet<Service> Services { get; set; }
+        public virtual DbSet<OwnerInformation> OwnerInformations { get; set; }
+        public virtual DbSet<Seminar> Seminars { get; set; }
+        public virtual DbSet<Audition> Auditions { get; set; }
     }
 }

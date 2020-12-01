@@ -3,48 +3,49 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="container">
+    <h2>Details</h2>
 
-<h2>Details</h2>
+    <div>
+        <h4>Reservation</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ReservationDate)
+            </dt>
 
-<div>
-    <h4>Reservation</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ReservationDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ReservationDate)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ReservationDate)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Location.LocationName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location.LocationName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Location.LocationName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location.LocationName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.OwnerAsset.AssetRegisteredName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerAsset.AssetRegisteredName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OwnerAsset.AssetRegisteredName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.OwnerAsset.AssetRegisteredName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Service.ServiceName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Service.ServiceName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Service.ServiceName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Service.ServiceName)
-        </dd>
-
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ReservationID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ReservationID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

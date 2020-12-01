@@ -5,11 +5,17 @@
 * License: https://bootstrapmade.com/license/
 */
 /*CUSTOM ENTRY*/
+#dataTable_filter {
+    text-align: right !important;
+    
+}
+
 .centerMe {
     text-align: center;
 }
 .gContainer {
-    height: 225px;
+    height: auto;
+    min-height: 225px;
     border: 3px solid #5c9f24;
     border-radius: 6px;
     box-shadow: 5px 5px;
@@ -649,9 +655,10 @@ section {
 }
 
 .about .image {
-  background: url("../img/Slider/Dogue-.5-1109x1320-web (1).png") center center no-repeat;
-  background-size: cover;
-  min-height: 400px;
+    background: url("../img/Slider/Dogue-.5-1109x1320-web (1).png") center center no-repeat;
+    /*background-size: cover;*/
+    background-size: contain;
+    min-height: 400px;
 }
 
 @media (max-width: 991px) {
@@ -1521,6 +1528,7 @@ section {
   padding: 0 0 30px 0;
   color: #fff;
   font-size: 14px;
+  position: sticky;
 }
 
 #footer .footer-top {
@@ -1659,4 +1667,9 @@ section {
   text-align: center;
   font-size: 13px;
   color: #fff;
+}
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1200px;
+    }
 }

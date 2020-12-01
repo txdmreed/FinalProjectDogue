@@ -1,0 +1,50 @@
+﻿@model Dogue.EF.DATA.Photo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Photo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Filter.FilterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Filter.FilterName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerAsset.AssetRegisteredName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerAsset.AssetRegisteredName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PhotoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

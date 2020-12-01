@@ -18,6 +18,7 @@ namespace Dogue.EF.DATA
         public Location()
         {
             this.Reservations = new HashSet<Reservation>();
+            this.Seminars = new HashSet<Seminar>();
         }
     
         public int LocationID { get; set; }
@@ -32,5 +33,7 @@ namespace Dogue.EF.DATA
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Seminar> Seminars { get; set; }
     }
 }

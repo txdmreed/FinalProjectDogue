@@ -17,9 +17,10 @@ namespace Dogue.EF.DATA
         public int PhotoID { get; set; }
         public string Title { get; set; }
         public byte[] PhotoUrl { get; set; }
-        public string filter { get; set; }
+        public int FilterID { get; set; }
         public int OwnerAssetID { get; set; }
     
+        public virtual Filter Filter { get; set; }
         public virtual OwnerAsset OwnerAsset { get; set; }
     }
 }

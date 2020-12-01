@@ -1,0 +1,26 @@
+﻿@model Dogue.EF.DATA.Filter
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Filter</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FilterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FilterName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FilterID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

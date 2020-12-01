@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Dogue.EF.DATA.Filter>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <h2 class="centerMe">Photo Gallery Filters Menu</h2>
+    @if (User.IsInRole("Admin") || User.IsInRole("Photographer"))
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create", "Filters") | @if (User.IsInRole("Admin"))
+            {@Html.ActionLink("Return to Admin Menu", "AdminMenu", "Manage")}
+        else
+        { @Html.ActionLink("Return to Contractor Menu", "ClientMenu", "Home")}
+        </p>
+        <table id="datatable" class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FilterName)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FilterName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.FilterID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.FilterID }) |
+                            @if (User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Delete", "Delete", new { id = item.FilterID })
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p> Apologies, you are not authorized to view this information.</p>
+    }
+</div>

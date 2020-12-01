@@ -50,54 +50,82 @@ namespace Dogue.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OwnerAssetID,AssetRegisteredName,AssetCallName,AssetSpecies,AssetBreed,AssetAge,AssetSize,AssetTrainerCertified,UserID,AssetPhoto,SpecialNotes,IsActive,DateAdded,DescriptiveColorProfile")] OwnerAsset ownerAsset)
+        public ActionResult Create([Bind(Include = "OwnerAssetID,AssetRegisteredName,AssetCallName,AssetSpecies,AssetBreed,AssetAge,AssetSize,AssetTrainerCertified,UserID,AssetPhoto,SpecialNotes,IsActive,DateAdded,DescriptiveColorProfile")] OwnerAsset ownerAsset, HttpPostedFileBase myImg)
         {
             if (ModelState.IsValid)
             {
-                db.OwnerAssets.Add(ownerAsset);
-                db.SaveChanges();
-                //TempData["ThankMessage"] = "Thank you. You have successfully completed full registration.  You may now take advanatage of all our client privileges.";
-                return RedirectToAction("Index");
-            }
+                /*#region photoupload*/
 
+                string imageName = "NoImage.png";
+                if (myImg != null)
+                {
+                    //Get File Extension - alternative to using a Substring () and Indexof()
+                    string imgExt = System.IO.Path.GetExtension(myImg.FileName);
+
+                    //list of allowed extentions
+                    string[] allowedExtentions = { ".png, .gif, .jpg., .jpeg" };
+                    if (allowedExtentions.Contains(imgExt))
+                    {
+                        //using GUid for saved file name
+                        imageName = Guid.NewGuid() + imgExt;
+                        //creat some variables to pass to the resize image method
+                        //Signature to resize Image
+                        string savePath = Server.MapPath("~/Content/assets/Image/");
+
+                        Image convertedImage = Image.FromStream(myImg.InputStream);
+                        int maxImgSize = 1200;
+                        int maxThumbSize = 100;
+                        //calling this method will use the variables created above will save the full size image and thumbnail img to your server. 
+                        UploadUtility.ResizeImage(savePath, imageName, convertedImage, maxImgSize, maxThumbSize);
+                        ViewBag.PhotoMessage = "Photo Upload Complete.";
+                    }
+                    /*#endregion*/
+                    db.OwnerAssets.Add(ownerAsset);
+                    db.SaveChanges();
+                    //TempData["ThankMessage"] = "Thank you. You have successfully completed full registration.  You may now take advanatage of all our client privileges.";
+                    return RedirectToAction("Index");
+                }
+            }
             ViewBag.UserID = new SelectList(db.OwnerInformations, "UserID", "FullName", ownerAsset.UserID);
             return View(ownerAsset);
+
         }
 
-        [HttpPost]
-        public ActionResult UploadPost(HttpPostedFileBase myImg)
-        {
-            string imageName = "NoImage.png";
-            if (myImg != null)
-            {
-                //Get File Extension - alternative to using a Substring () and Indexof()
-                string imgExt = System.IO.Path.GetExtension(myImg.FileName);
+        //[HttpPost]
+        //public ActionResult UploadPost(HttpPostedFileBase myImg)
+        //{
+        //    string imageName = "NoImage.png";
+        //    if (myImg != null)
+        //    {
+        //        //Get File Extension - alternative to using a Substring () and Indexof()
+        //        string imgExt = System.IO.Path.GetExtension(myImg.FileName);
 
-                //list of allowed extentions
-                string[] allowedExtentions = { ".png, .gif, .jpg., .jpeg" };
-                if (allowedExtentions.Contains(imgExt))
-                {
-                    //using GUid for saved file name
-                    imageName = Guid.NewGuid() + imgExt;
-                    //creat some variables to pass to the resize image method
-                    //Signature to resize Image
-                    string savePath = Server.MapPath("~/Content/Images/");
+        //        //list of allowed extentions
+        //        string[] allowedExtentions = { ".png, .gif, .jpg., .jpeg" };
+        //        if (allowedExtentions.Contains(imgExt))
+        //        {
+        //            //using GUid for saved file name
+        //            imageName = Guid.NewGuid() + imgExt;
+        //            //creat some variables to pass to the resize image method
+        //            //Signature to resize Image
+        //            string savePath = Server.MapPath("~/Content/Images/");
 
-                    Image convertedImage = Image.FromStream(myImg.InputStream);
-                    int maxImgSize = 2800;
-                    int maxThumbSize = 100;
-                    //calling this method will use the variables created above will save the full size image and thumbnail img to your server. 
-                    UploadUtility.ResizeImage(savePath, imageName, convertedImage, maxImgSize, maxThumbSize);
+        //            Image convertedImage = Image.FromStream(myImg.InputStream);
+        //            int maxImgSize = 2800;
+        //            int maxThumbSize = 100;
+        //            //calling this method will use the variables created above will save the full size image and thumbnail img to your server. 
+        //            UploadUtility.ResizeImage(savePath, imageName, convertedImage, maxImgSize, maxThumbSize);
 
-                }
+        //        }
 
 
-            }
+        //    }
 
-            TempData["PhotoMessage"] = "Photo Upload Complete.";
-            return RedirectToAction("Create")
-        ;}
-        
+        //    TempData["PhotoMessage"] = "Photo Upload Complete.";
+        //    return RedirectToAction("Create");
+        //
+        //}
+
 
         // GET: OwnerAssets/Edit/5
         public ActionResult Edit(int? id)

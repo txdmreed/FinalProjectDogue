@@ -148,6 +148,7 @@ namespace Dogue.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
@@ -175,7 +176,14 @@ namespace Dogue.UI.MVC.Controllers
                     db.OwnerInformations.Add(newSiteUser);
 
                     db.SaveChanges();
-                    UserManager.AddToRole(user.Id, "Client");
+                    if (User.IsInRole("Agent"))
+                        {
+                        var NewUser = UserManager;
+                        NewUser.AddToRole(user.Id, "Client");
+
+                        }
+
+                        UserManager.AddToRole(user.Id, "Client");
 
                     //ViewBag.RegisterMessage("Thank you, for registering with the Dogue Client Portal.  You're halfway there.  Please, fill in the following information for the animal client.");
 

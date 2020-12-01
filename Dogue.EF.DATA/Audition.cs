@@ -12,11 +12,15 @@ namespace Dogue.EF.DATA
     using System;
     using System.Collections.Generic;
     
-    public partial class C__MigrationHistory
+    public partial class Audition
     {
-        public string MigrationId { get; set; }
-        public string ContextKey { get; set; }
-        public byte[] Model { get; set; }
-        public string ProductVersion { get; set; }
+        public int AuditonID { get; set; }
+        public int OwnerAssetID { get; set; }
+        public string AuditionNotes { get; set; }
+        public System.DateTime AuditionDate { get; set; }
+        public string MediaType { get; set; }
+        public string ContractingCompany { get; set; }
+    
+        public virtual OwnerAsset OwnerAsset { get; set; }
     }
 }

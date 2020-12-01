@@ -16,6 +16,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" rel="stylesheet" />
     @*<link href="fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">*@
 
     <!-- Vendor CSS Files -->
@@ -81,10 +83,20 @@
                         </li>
 
                     }
-                    else if (User.IsInRole("Client") || User.IsInRole("Agent"))
+                    else if (User.IsInRole("Client") || User.IsInRole("Agent") || User.IsInRole("Photographer"))
                     {
                         <li class="drop-down">
-                            <a href="@Url.Action("ClientMenu", "Home")">Client Menu</a>
+                            @if (User.IsInRole("Client"))
+                            {
+                                ViewBag.MenuMessage = "Client Menu";
+                            }
+                            else
+                            {
+                                ViewBag.MenuMessage = "Contractor Menu";
+                            }
+
+                            <a href="@Url.Action("ClientMenu", "Home")">@ViewBag.MenuMessage</a>
+
                             <ul>
                                 <li class="drop-down">
                                     <a href="#">Client Information</a>
@@ -93,8 +105,18 @@
                                         <li><a href="@Url.Action("Index", "OwnerAssets")">Animal Client Information</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">My Gallery</a></li>
-                                <li><a href="@Url.Action("Index", "Reservations")">My Reservations</a></li>
+
+                                @if (User.IsInRole("Agent") | User.IsInRole("Photographer"))
+                                {
+                                    <li><a href="#">Gallery Menu</a></li>
+                                    <li><a href="@Url.Action("Index", "Reservations")"> Reservations Menu </a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#">My Gallery</a></li>
+                                    <li><a href="@Url.Action("Index", "Reservations")"> My Reservations </a></li>
+                                }
+
                             </ul>
                         </li>
                     }
@@ -131,8 +153,8 @@
                             <h3>Dogue: A Reservation MockUp Project</h3>
                             <p>
                                 Northland, Kansas City, MO, USA<br><br>
-                                <strong>Fake Phone:</strong> +1 987 654 3210<br>
-                                <strong>Email:</strong> txdmreed@outloouk.com<br>
+                                <strong>Phone:</strong> +1 719 266 2837<br>
+                                <strong>Email:</strong> txdmreed@outlook.com<br>
                             </p>
                             <div class="social-links mt-3">
                                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -149,12 +171,12 @@
                         <ul>
                             <li>
                                 <i class="bx bx-chevron-right"></i>
-                                <a href="@Url.Action("Index","Home")">Home</a>
+                                <a href="@Url.Action("Index","Home")">Dogue Home</a>
                             </li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://www.reedcoding.com/Portfolio">Deborah's Portfolio</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://www.reedcoding.com/Link">Teammate Pages</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://www.centriq.com">Learn it at Centriq</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("Contact","Home")">Contact Me</a></li>
                         </ul>
                     </div>
 
@@ -170,8 +192,8 @@
                     </div>
 
                     <div class="col-lg-4 col-md-6 footer-newsletter">
-                        <h4><a href="@Url.Action("Index", "Manage")">Manage Your Account Settings</a></h4>                  
-
+                        <h4><a href="@Url.Action("Index", "Manage")">Manage Your Client Portal Account Settings</a></h4>
+                        <h3><a href="http://www.reedcoding.com">Return To Deborah Reed's Home Site</a></h3>
                     </div>
 
                 </div>
@@ -187,7 +209,7 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/groovin-free-bootstrap-theme/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> || Adapted by Deborah Reed
             </div>
         </div>
     </footer><!-- End Footer -->
@@ -204,10 +226,41 @@
     <script src="~/Content/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="~/Content/assets/vendor/venobox/venobox.min.js"></script>
     <script src="~/Content/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+    <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <!-- Template Main JS File -->
     <script src="~/Content/assets/js/main.js"></script>
     @RenderSection("scripts", false)
+
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({ respnsive: true });
+        });
+
+        //use the selector values found (or declared) in your style sheet for the active class
+        //– for the code below your stylesheet would look like: .mainmenu ul li.selected a {//code}
+
+        $('.nav-menu li').each(function () {
+
+            //in this example the class is attached to the li, so you must go one level further to
+            //check the href value of the anchor tag and ensure it matches what is found in the //browser URL
+
+            if ($(this).find('a').attr('href') == window.location.pathname) {
+
+                //if they match add the correct class name. $(this) refers to the li
+                //(the last item in the DOM specified before the each function)
+
+                $(this).addClass('active');
+
+            }
+            if (window.location.pathname == 'home/index' || window.location.pathname == '/') {
+                $('#liHome').addClass('active');
+            }
+        });
+
+    </script>
 
 </body>
 

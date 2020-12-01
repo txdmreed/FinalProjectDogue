@@ -3,73 +3,83 @@
 @{
     ViewBag.Title = "Owner Asset Information";
 }
-<h2 class="centerMe">Animal Client Information</h2>
-@if (TempData["ThankMessage"] != null)
-{
-    TempData["ThankMessage"].ToString();
-}
-<p>
-    @Html.ActionLink("Create New", "Create", "OwnerAssets") |
-
-    @if (User.IsInRole("Admin"))
+<div class="container">
+    <h2 class="centerMe">Animal Client Information</h2>
+    @if (TempData["ThankMessage"] != null)
     {
-        @Html.ActionLink("Return to Admin Menu", "AdminMenu", "Manage")
-
+        TempData["ThankMessage"].ToString();
     }
-    else
-    {
-        @Html.ActionLink("Return to Client Menu", "ClientMenu", "Home")
-    }
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AssetInfo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssetPhoto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SpecialNotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateAdded)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Create New", "Create", "OwnerAssets") |
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssetInfo)
-            </td>
+        @if (User.IsInRole("Admin"))
+        {
+           <a href="@Url.Action("ClientMenu","Home")">Return to Admin Menu</a>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.AssetPhoto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpecialNotes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateAdded)
-            </td>
+        }
+        else if (User.IsInRole("Agent") || User.IsInRole("Photographer"))
+        {
+            @Html.ActionLink("Return to Contractor Menu", "ClientMenu", "Home")
+        }
+        else
+        {
+            @Html.ActionLink("Return to Client Menu", "ClientMenu", "Home")
+        }
+    </p>
+    <table  id="datatable" class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssetInfo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssetPhoto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpecialNotes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateAdded)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
 
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.OwnerAssetID }) |
-                @if (User.IsInRole("Admin"))
-                {
-                @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
-                }
-            </td>
-        </tr>
-    }
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AssetInfo)
+                    </td>
 
-</table>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AssetPhoto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SpecialNotes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateAdded)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.OwnerAssetID }) |
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

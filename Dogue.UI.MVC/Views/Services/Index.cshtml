@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Dogue.EF.DATA.Service>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    @if (User.IsInRole("Admin"))
+    {
+        <h2>Seminar Menu</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create") | @Html.ActionLink("Return to Admin Menu", "AdminMenu", "Manage")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ServiceName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ServiceID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ServiceID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ServiceID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+    else
+    {
+        <p>Apologies. You are not authorized to view this information.</p>
+    }
+</div>

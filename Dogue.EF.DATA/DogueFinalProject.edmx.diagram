@@ -4,26 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2ff97a48202a4fd1832e2375b0ed9951" Name="Diagram1">
-        <EntityTypeShape EntityType="DogueFinalProjectModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DogueFinalProjectModel.AspNetRole" Width="1.5" PointX="8.75" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DogueFinalProjectModel.AspNetUserClaim" Width="1.5" PointX="13.25" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DogueFinalProjectModel.AspNetUserLogin" Width="1.5" PointX="13.25" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DogueFinalProjectModel.AspNetUser" Width="1.5" PointX="11" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DogueFinalProjectModel.Location" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="DogueFinalProjectModel.OwnerAsset" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DogueFinalProjectModel.OwnerInformation" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DogueFinalProjectModel.Photo" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DogueFinalProjectModel.Reservation" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DogueFinalProjectModel.Service" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="769ab84ec7c340aa9c0cc369072567a6" Name="Diagram1">
+        <EntityTypeShape EntityType="DogueFinalProjectModel.AspNetRole" Width="1.5" PointX="8.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DogueFinalProjectModel.AspNetUserClaim" Width="1.5" PointX="13.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="DogueFinalProjectModel.AspNetUserLogin" Width="1.5" PointX="13.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DogueFinalProjectModel.AspNetUser" Width="1.5" PointX="11" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DogueFinalProjectModel.Filter" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DogueFinalProjectModel.Location" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DogueFinalProjectModel.OwnerAsset" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DogueFinalProjectModel.Photo" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DogueFinalProjectModel.Reservation" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DogueFinalProjectModel.Service" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
         <AssociationConnector Association="DogueFinalProjectModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="DogueFinalProjectModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DogueFinalProjectModel.FK_Photos_Filters" ManuallyRouted="false" />
         <AssociationConnector Association="DogueFinalProjectModel.FK_Reservations_Location" ManuallyRouted="false" />
-        <AssociationConnector Association="DogueFinalProjectModel.FK_OwnerAssets_OwnerInformation" ManuallyRouted="false" />
         <AssociationConnector Association="DogueFinalProjectModel.FK_Photos_OwnerAssets" ManuallyRouted="false" />
         <AssociationConnector Association="DogueFinalProjectModel.FK_Reservations_OwnerAssets" ManuallyRouted="false" />
         <AssociationConnector Association="DogueFinalProjectModel.FK_Reservations_Services" ManuallyRouted="false" />
         <AssociationConnector Association="DogueFinalProjectModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DogueFinalProjectModel.OwnerInformation" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="DogueFinalProjectModel.Seminar" Width="1.5" PointX="8.25" PointY="1.25" />
+        <AssociationConnector Association="DogueFinalProjectModel.FK_Seminars_Location" />
+        <AssociationConnector Association="DogueFinalProjectModel.FK_OwnerAssets_OwnerInformation" />
+        <EntityTypeShape EntityType="DogueFinalProjectModel.Audition" Width="1.5" PointX="5.25" PointY="11.5" />
+        <AssociationConnector Association="DogueFinalProjectModel.FK_Auditions_OwnerAssets" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

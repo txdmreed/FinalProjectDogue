@@ -171,12 +171,26 @@ namespace Dogue.EF.DATA
 
     public class PhotoMetaData
     {
+        [Required]
         public string Title { get; set; }
+        [Required]
         public byte[] PhotoUrl { get; set; }
-        public string filter { get; set; }
+        [Required]
+        [Display(Name = "Filter ID")]
+        public int FilterID { get; set; }
         [Required]
         [Display(Name = "Owner Asset ID")]
         public int OwnerAssetID { get; set; }
+    }
+
+    [MetadataType(typeof(FilterMetaData))]
+    public partial class Filter { }
+
+    public class FilterMetaData
+    {
+        [Required]
+        [Display(Name ="Filter Name")]
+        public string FilterName { get; set; }
 
     }
 

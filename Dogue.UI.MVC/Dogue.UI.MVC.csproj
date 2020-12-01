@@ -168,13 +168,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FiltersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OwnerAssetsController.cs" />
     <Compile Include="Controllers\OwnerInformationsController.cs" />
+    <Compile Include="Controllers\PhotosController.cs" />
     <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\SeminarsController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -339,7 +343,7 @@
     <Content Include="Content\assets\vendor\icofont\fonts\icofont.woff2" />
     <Content Include="fonts\Vogue.ttf" />
     <None Include="packages.config" />
-    <Content Include="Views\Home\portfolio_details.cshtml" />
+    <Content Include="Views\Photos\portfolio_details.cshtml" />
     <Content Include="Views\Locations\Create.cshtml" />
     <Content Include="Views\Locations\Delete.cshtml" />
     <Content Include="Views\Locations\Details.cshtml" />
@@ -355,7 +359,7 @@
     <Content Include="Views\OwnerInformations\Details.cshtml" />
     <Content Include="Views\OwnerInformations\Edit.cshtml" />
     <Content Include="Views\OwnerInformations\Index.cshtml" />
-    <Content Include="Views\Home\Portfolio.cshtml" />
+    <Content Include="Views\Photos\Portfolio.cshtml" />
     <Content Include="Views\Manage\AdminMenu.cshtml" />
     <Content Include="Views\Reservations\Create.cshtml" />
     <Content Include="Views\Reservations\Delete.cshtml" />
@@ -363,6 +367,26 @@
     <Content Include="Views\Reservations\Edit.cshtml" />
     <Content Include="Views\Reservations\Index.cshtml" />
     <Content Include="Views\Home\ClientMenu.cshtml" />
+    <Content Include="Views\Filters\Create.cshtml" />
+    <Content Include="Views\Filters\Delete.cshtml" />
+    <Content Include="Views\Filters\Details.cshtml" />
+    <Content Include="Views\Filters\Edit.cshtml" />
+    <Content Include="Views\Filters\Index.cshtml" />
+    <Content Include="Views\Photos\Create.cshtml" />
+    <Content Include="Views\Photos\Delete.cshtml" />
+    <Content Include="Views\Photos\Details.cshtml" />
+    <Content Include="Views\Photos\Edit.cshtml" />
+    <Content Include="Views\Photos\Index.cshtml" />
+    <Content Include="Views\Services\Create.cshtml" />
+    <Content Include="Views\Services\Delete.cshtml" />
+    <Content Include="Views\Services\Details.cshtml" />
+    <Content Include="Views\Services\Edit.cshtml" />
+    <Content Include="Views\Services\Index.cshtml" />
+    <Content Include="Views\Seminars\Create.cshtml" />
+    <Content Include="Views\Seminars\Delete.cshtml" />
+    <Content Include="Views\Seminars\Details.cshtml" />
+    <Content Include="Views\Seminars\Edit.cshtml" />
+    <Content Include="Views\Seminars\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dogue.EF.DATA\Dogue.EF.DATA.csproj">

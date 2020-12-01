@@ -3,120 +3,121 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="container">
+    <h2>Details</h2>
 
-<h2>Details</h2>
+    <div>
+        <h4>OwnerAsset</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AssetRegisteredName)
+            </dt>
 
-<div>
-    <h4>OwnerAsset</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AssetRegisteredName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AssetRegisteredName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AssetRegisteredName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AssetCallName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AssetCallName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AssetCallName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AssetCallName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AssetSpecies)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AssetSpecies)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AssetSpecies)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AssetSpecies)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AssetBreed)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AssetBreed)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AssetBreed)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AssetBreed)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AssetAge)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AssetAge)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AssetAge)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AssetAge)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AssetSize)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AssetSize)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AssetSize)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AssetSize)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AssetTrainerCertified)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AssetTrainerCertified)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AssetTrainerCertified)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AssetTrainerCertified)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AssetPhoto)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AssetPhoto)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AssetPhoto)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AssetPhoto)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SpecialNotes)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SpecialNotes)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SpecialNotes)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.SpecialNotes)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateAdded)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateAdded)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateAdded)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DescriptiveColorProfile)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DescriptiveColorProfile)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DescriptiveColorProfile)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DescriptiveColorProfile)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.OwnerInformation.UserID)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerInformation.UserID)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OwnerInformation.UserID)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.OwnerInformation.UserID)
-        </dd>
-
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.OwnerAssetID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.OwnerAssetID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -62,7 +62,7 @@
     <Compile Include="AspNetUserLogin.cs">
       <DependentUpon>DogueFinalProject.tt</DependentUpon>
     </Compile>
-    <Compile Include="C__MigrationHistory.cs">
+    <Compile Include="Audition.cs">
       <DependentUpon>DogueFinalProject.tt</DependentUpon>
     </Compile>
     <Compile Include="DogueFinalProject.Context.cs">
@@ -80,6 +80,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DogueFinalProject.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Filter.cs">
+      <DependentUpon>DogueFinalProject.tt</DependentUpon>
+    </Compile>
     <Compile Include="Location.cs">
       <DependentUpon>DogueFinalProject.tt</DependentUpon>
     </Compile>
@@ -95,6 +98,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reservation.cs">
+      <DependentUpon>DogueFinalProject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Seminar.cs">
       <DependentUpon>DogueFinalProject.tt</DependentUpon>
     </Compile>
     <Compile Include="Service.cs">
