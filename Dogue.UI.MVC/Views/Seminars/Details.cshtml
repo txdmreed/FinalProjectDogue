@@ -3,64 +3,65 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="container">
+    <h2>Details</h2>
 
-<h2>Details</h2>
+    <div>
+        <h4>Seminar</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.SeminarReservationLimit)
+            </dt>
 
-<div>
-    <h4>Seminar</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SeminarReservationLimit)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SeminarReservationLimit)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.SeminarReservationLimit)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SeminarName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SeminarName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SeminarName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.SeminarName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SeminarDate)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SeminarDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SeminarDate)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.SeminarDate)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SeminarNotes)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SeminarNotes)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SeminarNotes)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.SeminarNotes)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SeminarSpeaker)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SeminarSpeaker)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SeminarSpeaker)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.SeminarSpeaker)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Location.LocationName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location.LocationName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Location.LocationName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location.LocationName)
-        </dd>
-
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.SeminarID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SeminarID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

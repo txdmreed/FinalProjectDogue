@@ -172,6 +172,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MySeminarsController.cs" />
     <Compile Include="Controllers\OwnerAssetsController.cs" />
     <Compile Include="Controllers\OwnerInformationsController.cs" />
     <Compile Include="Controllers\PhotosController.cs" />
@@ -194,7 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\css\style.css" />
-    <Content Include="Content\assets\Image\NoImage.png" />
+    <Content Include="Content\assets\Image\noImage.png" />
     <Content Include="Content\assets\img\about.jpg" />
     <Content Include="Content\assets\img\apple-touch-icon.png" />
     <Content Include="Content\assets\img\clients\client-1.png" />
@@ -204,6 +205,7 @@
     <Content Include="Content\assets\img\clients\client-5.png" />
     <Content Include="Content\assets\img\clients\client-6.png" />
     <Content Include="Content\assets\img\favicon.png" />
+    <Content Include="Content\assets\img\portfolio\noImage.png" />
     <Content Include="Content\assets\img\portfolio\portfolio-1.jpg" />
     <Content Include="Content\assets\img\portfolio\portfolio-2.jpg" />
     <Content Include="Content\assets\img\portfolio\portfolio-3.jpg" />
@@ -387,6 +389,13 @@
     <Content Include="Views\Seminars\Details.cshtml" />
     <Content Include="Views\Seminars\Edit.cshtml" />
     <Content Include="Views\Seminars\Index.cshtml" />
+    <Content Include="Views\Home\EmailConfirmation.cshtml" />
+    <Content Include="Views\Photos\PhotosTileView.cshtml" />
+    <Content Include="Views\MySeminars\Create.cshtml" />
+    <Content Include="Views\MySeminars\Delete.cshtml" />
+    <Content Include="Views\MySeminars\Details.cshtml" />
+    <Content Include="Views\MySeminars\Edit.cshtml" />
+    <Content Include="Views\MySeminars\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dogue.EF.DATA\Dogue.EF.DATA.csproj">

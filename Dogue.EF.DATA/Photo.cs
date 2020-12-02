@@ -16,7 +16,7 @@ namespace Dogue.EF.DATA
     {
         public int PhotoID { get; set; }
         public string Title { get; set; }
-        public byte[] PhotoUrl { get; set; }
+        public string PhotoUrl { get; set; }
         public int FilterID { get; set; }
         public int OwnerAssetID { get; set; }
     

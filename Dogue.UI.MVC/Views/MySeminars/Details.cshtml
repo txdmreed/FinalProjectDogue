@@ -1,0 +1,26 @@
+﻿@model Dogue.EF.DATA.MySeminar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MySeminar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Seminar.SeminarName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seminar.SeminarName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MySeminarID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

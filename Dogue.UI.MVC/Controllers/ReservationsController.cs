@@ -16,6 +16,7 @@ namespace Dogue.UI.MVC.Controllers
         private DogueFinalProjectEntities db = new DogueFinalProjectEntities();
 
         // GET: Reservations
+        [Authorize]
         public ActionResult Index()
         {
             if (User.IsInRole("Admin") || User.IsInRole("Agent"))

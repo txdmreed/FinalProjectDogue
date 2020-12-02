@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Dogue.EF.DATA;
+using Microsoft.AspNet.Identity;
 
 namespace Dogue.UI.MVC.Controllers
 {
@@ -15,13 +16,28 @@ namespace Dogue.UI.MVC.Controllers
         private DogueFinalProjectEntities db = new DogueFinalProjectEntities();
 
         // GET: OwnerInformations
+        [Authorize]
         public ActionResult Index()
         {
-            var ownerInformations = db.OwnerInformations;
-            return View(ownerInformations.ToList());
+            if (Request.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("Admin") || User.IsInRole("Photographer"))
+            {
+                var ownerInformations = db.OwnerInformations;
+                return View(ownerInformations.ToList());
+            }
+            else
+            {
+                var currentUser = User.Identity.GetUserId();
+                var user = (from o in db.OwnerInformations
+                                where o.UserID == currentUser
+                                select o).FirstOrDefault();
+
+                return View(user);
+            }
+
         }
 
         // GET: OwnerInformations/Details/5
+        [Authorize]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -37,6 +53,7 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         // GET: OwnerInformations/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.UserID = new SelectList(db.OwnerInformations, "UserID", "FullName");
@@ -48,6 +65,7 @@ namespace Dogue.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "UserID,FirstName,LastName,MainPhoneNumber,SecondaryPhoneNumber,Email,Address,City,State,ZipCode")] OwnerInformation ownerInformation)
         {
             if (ModelState.IsValid)
@@ -64,6 +82,7 @@ namespace Dogue.UI.MVC.Controllers
 
         // GET: OwnerInformations/Edit/5
         [HttpGet]
+        [Authorize]
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -84,6 +103,7 @@ namespace Dogue.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "UserID,FirstName,LastName,MainPhoneNumber,SecondaryPhoneNumber,Email,Address,City,State,ZipCode")] OwnerInformation ownerInformation)
         {
             if (ModelState.IsValid)
@@ -97,6 +117,7 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         // GET: OwnerInformations/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -113,6 +134,7 @@ namespace Dogue.UI.MVC.Controllers
 
         // POST: OwnerInformations/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {

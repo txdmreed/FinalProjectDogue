@@ -20,6 +20,7 @@ namespace Dogue.EF.DATA
         public System.DateTime AuditionDate { get; set; }
         public string MediaType { get; set; }
         public string ContractingCompany { get; set; }
+        public Nullable<bool> Successful { get; set; }
     
         public virtual OwnerAsset OwnerAsset { get; set; }
     }

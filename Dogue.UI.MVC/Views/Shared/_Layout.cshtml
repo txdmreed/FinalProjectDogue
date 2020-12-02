@@ -16,6 +16,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 
     <link href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" rel="stylesheet" />
     @*<link href="fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">*@
@@ -54,7 +55,7 @@
 
                     <li><a href="@Url.Action("Index","Home")">Home</a></li>
                     <li><a href="@Url.Action("About","Home")">About</a></li>
-                    <li><a href="@Url.Action("Portfolio", "Home")">Gallery</a></li>
+                    <li><a href="@Url.Action("Portfolio", "Photos")">Gallery</a></li>
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="drop-down">
@@ -64,39 +65,46 @@
                                 <li class="drop-down">
                                     <a href="#">Manage Users</a>
                                     <ul>
-                                        <li><a href="@Url.Action("Index","UsersAdmin")">Manage Users</a></li>
-                                        <li><a href="@Url.Action("Index","RolesAdmin")">Manage Roles</a></li>
+                                        <li><a href="@Url.Action("Index", "UsersAdmin")">Manage Users</a></li>
+                                        <li><a href="@Url.Action("Index", "RolesAdmin")">Manage Roles</a></li>
                                     </ul>
 
                                 <li class="drop-down">
                                     <a href="#">Client Information</a>
                                     <ul>
-                                        <li><a href="@Url.Action("Index","OwnerInformations")">Owner Information</a></li>
-                                        <li><a href="@Url.Action("Index","OwnerAssets")">Client Animal Information</a></li>
+                                        <li><a href="@Url.Action("Index", "OwnerInformations")">Owner Information</a></li>
+                                        <li><a href="@Url.Action("Index", "OwnerAssets")">Client Animal Information</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Portfolio</a></li>
+                                <li><a href="@Url.Action("Index", "Photos")">Portfolio</a></li>
 
                                 <li> <a href="@Url.Action("Index", "Locations")">Locations</a></li>
-                                <li><a href="@Url.Action("Index","Reservations")">Reservation Menu</a></li>
+                                <li><a href="@Url.Action("Index", "Reservations")">Reservation Menu</a></li>
+                                <li class="drop-down">
+                                    <a href="#">Seminars</a>
+                                    <ul>
+                                        <li><a href="@Url.Action("Index", "Seminars")">All Seminars</a></li>
+                                        <li><a href="@Url.Action("Index","MySeminars")">Seminar Reserves</a></li>
+                                    </ul>
+                                </li>
+
+
                             </ul>
                         </li>
 
                     }
                     else if (User.IsInRole("Client") || User.IsInRole("Agent") || User.IsInRole("Photographer"))
                     {
+
                         <li class="drop-down">
                             @if (User.IsInRole("Client"))
                             {
-                                ViewBag.MenuMessage = "Client Menu";
+                                <a href="@Url.Action("ClientMenu", "Home")"> Client Menu</a>
                             }
                             else
                             {
-                                ViewBag.MenuMessage = "Contractor Menu";
+                                <a href="@Url.Action("ClientMenu", "Home")"> Contractor Menu</a>
                             }
-
-                            <a href="@Url.Action("ClientMenu", "Home")">@ViewBag.MenuMessage</a>
-
                             <ul>
                                 <li class="drop-down">
                                     <a href="#">Client Information</a>
@@ -106,21 +114,19 @@
                                     </ul>
                                 </li>
 
-                                @if (User.IsInRole("Agent") | User.IsInRole("Photographer"))
-                                {
-                                    <li><a href="#">Gallery Menu</a></li>
-                                    <li><a href="@Url.Action("Index", "Reservations")"> Reservations Menu </a></li>
-                                }
-                                else
-                                {
-                                    <li><a href="#">My Gallery</a></li>
-                                    <li><a href="@Url.Action("Index", "Reservations")"> My Reservations </a></li>
-                                }
+                                <li><a href="@Url.Action("Index", "Photos")">Gallery Menu</a></li>
+                                <li><a href="@Url.Action("Index", "Reservations")"> Animal Service Reservations</a></li>
 
+                                <li class="drop-down">
+                                    <a href="#">Seminars</a>
+                                    <ul>
+                                        <li><a href="@Url.Action("Index", "Seminars")">All Seminars</a></li>
+                                        <li><a href="@Url.Action("Index","MySeminars")">My Seminars</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                     }
-
                     <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
                     <li>@Html.Partial("_LoginPartial")</li>
                 </ul>
@@ -226,10 +232,9 @@
     <script src="~/Content/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="~/Content/assets/vendor/venobox/venobox.min.js"></script>
     <script src="~/Content/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 
     <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <!-- Template Main JS File -->
     <script src="~/Content/assets/js/main.js"></script>
     @RenderSection("scripts", false)
@@ -239,21 +244,13 @@
             $('#datatable').DataTable({ respnsive: true });
         });
 
-        //use the selector values found (or declared) in your style sheet for the active class
-        //– for the code below your stylesheet would look like: .mainmenu ul li.selected a {//code}
+
+
 
         $('.nav-menu li').each(function () {
-
-            //in this example the class is attached to the li, so you must go one level further to
-            //check the href value of the anchor tag and ensure it matches what is found in the //browser URL
-
             if ($(this).find('a').attr('href') == window.location.pathname) {
 
-                //if they match add the correct class name. $(this) refers to the li
-                //(the last item in the DOM specified before the each function)
-
                 $(this).addClass('active');
-
             }
             if (window.location.pathname == 'home/index' || window.location.pathname == '/') {
                 $('#liHome').addClass('active');

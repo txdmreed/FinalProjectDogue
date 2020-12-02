@@ -35,6 +35,70 @@ namespace Dogue.EF.DATA
         [Display(Name = "Groomer Reserervation Limit")]
         public byte GroomerReservationLimit { get; set; }
     }
+    [MetadataType(typeof(AuditionMetaData))]
+    public partial class Audition { }
+
+    public class AuditionMetaData
+    {
+        [Display(Name = "Client Animal")]
+        [Required]
+        public int OwnerAssetID { get; set; }
+        [UIHint("MultilineText")]
+        [Display(Name = "Audition Notes")]
+        [Required]
+        public string AuditionNotes { get; set; }
+        [Display(Name = "Audition Date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
+        [Required]
+        public System.DateTime AuditionDate { get; set; }
+        [DisplayFormat(NullDisplayText = "*Not Available")]
+        [Display(Name = "Media Type")]
+        public string MediaType { get; set; }
+        [Display(Name = "Contracting Company")]
+        [DisplayFormat(NullDisplayText = "*Not Available")]
+        public string ContractingCompany { get; set; }
+
+    }
+
+    [MetadataType(typeof(MySeminarMetaData))]
+    public partial class MySeminar { }
+
+    public class MySeminarMetaData
+    {
+        [Required]
+        [Display(Name = "Seminar ID")]
+        public int SeminarID { get; set; }
+
+    }
+    
+    [MetadataType(typeof(SeminarMetaData))]
+    public partial class Seminar { }
+
+    public class SeminarMetaData
+    {
+        [Required]
+        [Display(Name = "Location ID")]
+        public int LocationID { get; set; }
+        [Required]
+        [Display(Name = "Class Size Limit")]
+        public byte SeminarReservationLimit { get; set; }
+        [Required]
+        [Display(Name = "Seminar Name")]
+        [StringLength(50, ErrorMessage = "*50 Character limit reached. Please, contact system adminisistrator if more room is needed.")]
+        public string SeminarName { get; set; }
+        [Required]
+        [Display(Name = "Date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
+        public System.DateTime SeminarDate { get; set; }
+        [DisplayFormat(NullDisplayText = "*Not Available")]
+        [UIHint("MulilineText")]
+        [Display(Name = "Seminar Information")]
+        public string SeminarNotes { get; set; }
+        [Display(Name = "Seminar Speaker")]
+        [DisplayFormat(NullDisplayText = "*Not Available")]
+        public string SeminarSpeaker { get; set; }
+    }
+
 
     [MetadataType(typeof(OwnerAssetMetaData))]
     public partial class OwnerAsset
@@ -42,7 +106,7 @@ namespace Dogue.EF.DATA
         [Display(Name = "Client Animal Quick Look")]
         public string AssetInfo
         {
-            get { return string.Format("Species: {0} -- Call Name: {1} -- {2} -- Size Profile: {3}", AssetSpecies, AssetCallName, (AssetTrainerCertified == true) ? "Training Certified" : "Training Unknown", AssetSize); }
+            get { return string.Format("Species: {0} </br>Call Name: {1} </br>{2} </br>Size Profile: {3}", AssetSpecies, AssetCallName, (AssetTrainerCertified == true) ? "Training Certified" : "Training Unknown", AssetSize); }
         }
     }
 
@@ -74,9 +138,11 @@ namespace Dogue.EF.DATA
         [Display(Name = "Trainer Certified")]
         public bool AssetTrainerCertified { get; set; }
         [DisplayFormat(NullDisplayText = "*Not Available")]
-        public byte[] AssetPhoto { get; set; }
+        [Display(Name = "Animal Client Photo")]
+        public string AssetPhoto { get; set; }
         [DisplayFormat(NullDisplayText = "*Not Available")]
         [UIHint("MulilineText")]
+        [Display(Name = "Special Notes")]
         public string SpecialNotes { get; set; }
         [Display(Name = "Active")]
         public bool IsActive { get; set; }
@@ -160,14 +226,14 @@ namespace Dogue.EF.DATA
 
 
     public class ServiceMetaData
-    {    
+    {
         [Required]
         [Display(Name = "Service")]
         public string ServiceName { get; set; }
     }
 
     [MetadataType(typeof(PhotoMetaData))]
-    public partial class Photo {}
+    public partial class Photo { }
 
     public class PhotoMetaData
     {
@@ -189,7 +255,7 @@ namespace Dogue.EF.DATA
     public class FilterMetaData
     {
         [Required]
-        [Display(Name ="Filter Name")]
+        [Display(Name = "Filter Name")]
         public string FilterName { get; set; }
 
     }

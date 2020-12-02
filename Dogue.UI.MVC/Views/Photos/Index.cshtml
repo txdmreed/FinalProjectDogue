@@ -8,12 +8,17 @@
     @if (User.IsInRole("Admin") || User.IsInRole("Photographer"))
     {
         <p>
-            @Html.ActionLink("Create New", "Create", "Photos") | @if (User.IsInRole("Admin"))
+            @Html.ActionLink("Create New", "Create", "Photos") |
+            @if (User.IsInRole("Admin"))
             {@Html.ActionLink("Return to Admin Menu", "AdminMenu", "Manage")}
         else
         { @Html.ActionLink("Return to Contractor Menu", "ClientMenu", "Home")}
         </p>
     }
+    <div class="col-md-6">
+        @Html.ActionLink("Tiled Gallery", "PhotosTileView", "Photos", null, new { @class = "btn btn-secondary" })
+    </div>
+
     <table id="datatable" class="table">
         <thead>
             <tr>
@@ -40,7 +45,7 @@
                         @Html.DisplayFor(modelItem => item.Title)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PhotoUrl)
+                        <img src="~/Content/assets/img/portfolio/t_@item.PhotoUrl" />
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Filter.FilterName)

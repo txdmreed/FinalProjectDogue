@@ -186,7 +186,7 @@ namespace Dogue.UI.MVC.Controllers
                         UserManager.AddToRole(user.Id, "Client");
 
                     //ViewBag.RegisterMessage("Thank you, for registering with the Dogue Client Portal.  You're halfway there.  Please, fill in the following information for the animal client.");
-
+                    ViewBag.RegisterCompleteMessage = "Thank you. You have successfully completed full registration.  You may now take advanatage of all our client privileges. To take full advantage of all our site offers, please, take a few moments to fill in your Animal Client information.";
                     return RedirectToAction("Create", "OwnerAssets");
                 }
                 AddErrors(result);

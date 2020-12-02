@@ -5,10 +5,7 @@
 }
 <div class="container">
     <h2 class="centerMe">Animal Client Information</h2>
-    @if (TempData["ThankMessage"] != null)
-    {
-        TempData["ThankMessage"].ToString();
-    }
+    
     <p>
         @Html.ActionLink("Create New", "Create", "OwnerAssets") |
 
@@ -57,7 +54,7 @@
                     </td>
 
                     <td>
-                        @Html.DisplayFor(modelItem => item.AssetPhoto)
+                      <img src="~/Content/assets/Image/t_@item.AssetPhoto" />
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.SpecialNotes)

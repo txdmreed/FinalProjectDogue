@@ -17,7 +17,7 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
@@ -25,11 +25,8 @@ namespace Dogue.UI.MVC.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Portfolio()
-        {
-            return View();
-        }
+
+
 
         [HttpGet]
         public ActionResult Contact()
@@ -38,6 +35,7 @@ namespace Dogue.UI.MVC.Controllers
             return View();
         }
         [HttpGet]
+        [Authorize]
         public ActionResult ClientMenu()
         {
             return View();
@@ -45,7 +43,7 @@ namespace Dogue.UI.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(ContactViewModel cvm)
+        public ActionResult Contact(ContactViewModel cvm)
         {
             if (!ModelState.IsValid)
             {

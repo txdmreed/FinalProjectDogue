@@ -1,0 +1,49 @@
+﻿
+@model IEnumerable<Dogue.EF.DATA.Photo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h2 class="centerme">Photos Tiles</h2>
+    <div></div>
+    <div class="row centerme">
+        @if ((User.IsInRole("Admin") && Request.IsAuthenticated) || (User.IsInRole("Photographer") && Request.IsAuthenticated))
+        {
+
+            <div class="col-md-6">
+                @Html.ActionLink("Create New", "Create", "Photo")
+            </div>
+
+        }
+
+        <div class="col-md-6">
+            @Html.ActionLink("Table View", "Index", "Photo")
+        </div>
+    </div>
+    <div class="col-md-6">
+        @Html.ActionLink("Table View", "Index", "Photos", null, new { @class = "btn btn-secondary" })
+    </div>
+
+
+    @foreach (var item in Model)
+    {
+        <div class="gContainer">
+            <div class="gContent">
+                <a href="@Url.Action("Details", "Photo",new { id = item.PhotoID })" id=courseName><img src="~/Content/assets/img/portfolio/t_@item.PhotoUrl" /></a>
+
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <p class="gFooterLeft">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PhotoID })
+                    </p>
+                    <p class="gFooterRight">
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PhotoID })
+                    </p>
+                }
+            </div>
+        </div>
+    }
+</div>

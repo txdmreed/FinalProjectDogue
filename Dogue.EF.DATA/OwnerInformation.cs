@@ -18,6 +18,7 @@ namespace Dogue.EF.DATA
         public OwnerInformation()
         {
             this.OwnerAssets = new HashSet<OwnerAsset>();
+            this.MySeminars = new HashSet<MySeminar>();
         }
     
         public string UserID { get; set; }
@@ -33,5 +34,7 @@ namespace Dogue.EF.DATA
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OwnerAsset> OwnerAssets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MySeminar> MySeminars { get; set; }
     }
 }

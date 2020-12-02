@@ -1,0 +1,49 @@
+﻿@model Dogue.UI.MVC.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "EmailConfirmation";
+}
+
+
+<div class="container">
+    <h2>Email Confirmation</h2>
+
+    <div>
+        <h4>Your message has been delivered.  Please allow 48hrs for a response. </h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Subject)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Subject)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Message)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Message)
+            </dd>
+
+        </dl>
+    </div>
+</div>

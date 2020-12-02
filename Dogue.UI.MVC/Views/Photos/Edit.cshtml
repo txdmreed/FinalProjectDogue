@@ -3,20 +3,20 @@
 @{
     ViewBag.Title = "Edit";
 }
+<div class="container">
+    <h2>Edit</h2>
 
-<h2>Edit</h2>
 
+    @using (Html.BeginForm("Edit", "Photos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
         <h4>Photo</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.PhotoID)
-
+        @Html.HiddenFor(model => model.PhotoUrl)
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -25,13 +25,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PhotoUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PhotoUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PhotoUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.FilterID, "FilterID", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -42,25 +35,40 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.OwnerAssetID, "OwnerAssetID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.OwnerAssetID, "AssetCallName", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("OwnerAssetID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.OwnerAssetID, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+        <div class="container">
+            <div class="form-group">
+                <h5>Client Animal Photo</h5>
+                <div class="row">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <div>
+                            <img src="~/Content/assets/Image/@Model.PhotoUrl" />
+                        </div>
+                        <div>
+                            <input type="file" name="myImg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
             </div>
         </div>
     </div>
-}
+    }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

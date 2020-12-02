@@ -3,49 +3,51 @@
     ViewBag.Title = "Administrative Menu";
 }
 
-    <div class="container">
-        <h1 class="centerMe">@ViewBag.Title</h1>
-        <div class="gContainer">
-            <div class="gContent">
-                <h2 id="cardTitle">Register</h2>
-                <p><a href="@Url.Action("Register", "Account")">Register New User</a></p>
-            </div>
-        </div>
-        <div class="gContainer">
-            <div class="gContent">
-                <h2 id="cardTitle">Portfolio</h2>
-                <p><a href="#">Yet To Come</a></p>
-            </div>
-        </div>
-        <div class="gContainer">
-            <div class="gContent">
-                <h2 id="cardTitle">Site Management</h2>
-                <p><a href="@Url.Action("Index","UsersAdmin")">Users Manager</a></p>
-                <p><a href="@Url.Action("Index","RolesAdmin")">Roles Manager</a></p>
-                <p><a href="@Url.Action("Index", "Services")">Services Manager</a></p>
-
-            </div>
-        </div>
-        <div class="gContainer">
-            <div class="gContent">
-                <h2 id="cardTitle">Location</h2>
-                <p><a href="@Url.Action("Index","Locations")">Locations</a></p>
-            </div>
-        </div>
-        <div class="gContainer">
-            <div class="gContent">
-                <h2 id="cardTitle">Client Information</h2>
-                <p><a href="@Url.Action("Index","OwnerInformations")">Owner Information</a></p>
-                <p><a href="@Url.Action("Index","OwnerAssets")">Client Animal Information</a></p>
-            </div>
-        </div>
-        <div class="gContainer">
-            <div class="gContent">
-                <h2 id="cardTitle">Reservations</h2>
-                <p><a href="@Url.Action("Index","Reservations")">Reservation Menu</a></p>
-            </div>
+<div class="container">
+    <h1 class="centerMe">@ViewBag.Title</h1>
+    <div class="gContainer">
+        <div class="gContent">
+            <h2 id="cardTitle">Register</h2>
+            <p><a href="@Url.Action("Register", "Account")">Register New User</a></p>
         </div>
     </div>
+    <div class="gContainer">
+        <div class="gContent">
+            <h2 id="cardTitle">Portfolio</h2>
+            <p><a href="@Url.Action("Index", "Photos")">Photo Manager</a></p>
+        </div>
+    </div>
+    <div class="gContainer">
+        <div class="gContent">
+            <h2 id="cardTitle">Site Management</h2>
+            <p><a href="@Url.Action("Index","UsersAdmin")">Users Manager</a></p>
+            <p><a href="@Url.Action("Index","RolesAdmin")">Roles Manager</a></p>
+            <p><a href="@Url.Action("Index", "Services")">Services Manager</a></p>
+
+        </div>
+    </div>
+    <div class="gContainer">
+        <div class="gContent">
+            <h2 id="cardTitle">Location</h2>
+            <p><a href="@Url.Action("Index","Locations")">Locations</a></p>
+        </div>
+    </div>
+    <div class="gContainer">
+        <div class="gContent">
+            <h2 id="cardTitle">Client Information</h2>
+            <p><a href="@Url.Action("Index","OwnerInformations")">Owner Information</a></p>
+            <p><a href="@Url.Action("Index","OwnerAssets")">Client Animal Information</a></p>
+        </div>
+    </div>
+    <div class="gContainer">
+        <div class="gContent">
+            <h2 id="cardTitle">Activities Manager</h2>
+            <p><a href="@Url.Action("Index","Reservations")">Animal Service Reservations</a></p>
+            <p><a href="@Url.Action("Index", "Seminars")">All Seminars</a></p>
+            <p><a href="@Url.Action("Index","MySeminars")">Seminar Reserves</a></p>
+        </div>
+    </div>
+</div>
     <hr />
 
 

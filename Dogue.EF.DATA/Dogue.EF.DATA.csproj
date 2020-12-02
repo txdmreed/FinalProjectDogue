@@ -87,6 +87,9 @@
       <DependentUpon>DogueFinalProject.tt</DependentUpon>
     </Compile>
     <Compile Include="Metadata\DogueFinalProjectMetadata.cs" />
+    <Compile Include="MySeminar.cs">
+      <DependentUpon>DogueFinalProject.tt</DependentUpon>
+    </Compile>
     <Compile Include="OwnerAsset.cs">
       <DependentUpon>DogueFinalProject.tt</DependentUpon>
     </Compile>
