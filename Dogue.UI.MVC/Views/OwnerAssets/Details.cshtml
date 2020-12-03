@@ -5,7 +5,7 @@
 }
 <div class="container">
     <h2>Details</h2>
-
+    <p><a href="@Url.Action("Portfolio", "Photos")">Go To Gallery</a></p>
     <div>
         <h4>OwnerAsset</h4>
         <hr />
@@ -16,6 +16,14 @@
 
             <dd>
                 @Html.DisplayFor(model => model.AssetRegisteredName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AssetPhoto)
+            </dt>
+
+            <dd>
+                <img src="~/Content/assets/Image/@Model.AssetPhoto" alt="@Model.AssetCallName" />
             </dd>
 
             <dt>
@@ -41,38 +49,32 @@
             <dd>
                 @Html.DisplayFor(model => model.AssetBreed)
             </dd>
+            <div class="row">
+                <dt>
+                    @Html.DisplayNameFor(model => model.AssetAge)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.AssetAge)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AssetAge)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.AssetAge)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AssetSize)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.AssetSize)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AssetSize)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.AssetSize)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AssetTrainerCertified)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.AssetTrainerCertified)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AssetTrainerCertified)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.AssetTrainerCertified)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.AssetPhoto)
-            </dt>
-
-            <dd>
-                <img src="~/Content/assets/Image/@Model.AssetPhoto" alt="@Model.AssetCallName" />
-            </dd>
+            </div>
 
             <dt>
                 @Html.DisplayNameFor(model => model.SpecialNotes)

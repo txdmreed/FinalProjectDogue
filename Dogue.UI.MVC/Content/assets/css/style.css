@@ -28,34 +28,64 @@
     position: relative; /*For absolute positioning below*/
     background: #172239;
 }
+.galleryContainer {
+    height: 175px;
+    min-height: 150px;
+    border: 3px solid #5c9f24;
+    border-radius: 6px;
+    box-shadow: 5px 5px;
+    padding: 1em;
+    width: 15%;
+    float: left;
+    margin: .5em;
+    margin-top: 4em;
+    margin-bottom: 2em;
+    position: relative; /*For absolute positioning below*/
+ 
+}
+
 
 .gContent {
     text-align: center;
+    font-family: "Raleway", sans-serif;
 }
-.gContent h2{
-    font-size: 2.3vw;
-    color: #F5F5F5;
-}
-.gContent p {
-    font-size: 2vw;
-    line-height: 28px
-}
+    .gContent h2 {
+        font-size: 2.3vw;
+        color: #F5F5F5;
+        font-family: "Raleway", sans-serif;
+    }
+    .gContent p {
+        font-size: 2vw;
+        line-height: 28px;
+        font-family: "Raleway", sans-serif;
+    }
 
 .gFooterLeft {
     position: absolute;
-    bottom: .5em;
+    bottom: .2em;
     left: .5em;
+    font-family: "Raleway", sans-serif;
+    background: rgba(42, 42, 42, .7);
+    border-radius: 6px;
 }
-
+.galleryFooterLeft {
+    position: absolute;
+    bottom: .2em;
+    font-family: "Raleway", sans-serif;
+    /*background: rgba(42, 42, 42, .7);*/
+    border-radius: 4px;
+    text-align: center;
+}
 .gFooterRight {
     position: absolute;
-    bottom: .5em;
+    bottom: .2em;
     right: .5em;
+    font-family: "Raleway", sans-serif;
+    background: #2a2a2a;
+    border-radius: 6px;
 }
 
-    .gFooterRight a {
-        color: #ffd800;
-    }
+
 
 #courseName {
     color: #7bff6c;
@@ -985,17 +1015,22 @@ section {
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
+.rounder {
+    border-radius: 50%;
+}
 .team {
   background: #fff;
   padding: 60px 0;
+ 
 }
 
-.team .member {
-  text-align: center;
-  margin-bottom: 20px;
-  background: #343a40;
-  position: relative;
-}
+    .team .member {
+        text-align: center;
+        margin-bottom: 20px;
+        background: #343a40;
+        position: relative;
+    
+    }
 
 .team .member .member-info {
   opacity: 0;
@@ -1008,6 +1043,7 @@ section {
   left: 0;
   right: 0;
   transition: 0.2s;
+  border-radius:50%;
 }
 
 .team .member .member-info-content {
@@ -1015,11 +1051,12 @@ section {
   transition: margin 0.2s;
 }
 
-.team .member:hover .member-info {
-  background: rgba(0, 0, 0, 0.7);
-  opacity: 1;
-  transition: 0.4s;
-}
+        .team .member:hover .member-info {
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 1;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
 
 .team .member:hover .member-info-content {
   margin-top: 0;

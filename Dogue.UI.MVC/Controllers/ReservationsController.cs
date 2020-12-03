@@ -104,14 +104,7 @@ namespace Dogue.UI.MVC.Controllers
 
             if (ModelState.IsValid)
             {
-                if (User.IsInRole("Admin"))
-                {
-                    db.Reservations.Add(reservation);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                else
-                {
+                
 
                     var phoShoots = (from l in db.Locations
                                      where l.LocationID == reservation.LocationID
@@ -151,6 +144,11 @@ namespace Dogue.UI.MVC.Controllers
                     }
                     else
                     {
+                        if (User.IsInRole("Admin"))
+                    {
+                        return PartialView("OverbookedCreate");
+                        
+                    }
                         ViewBag.ReservationMessage = "We're sorry but the reservation limit for that day and/or service has been reached. Please, make new selections.";
                         ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
                         ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets.Where(r => r.UserID == currentUser), "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
@@ -158,8 +156,9 @@ namespace Dogue.UI.MVC.Controllers
 
                         return View(reservation);
                     }
-                }
+                
             }
+
             ViewBag.ReservationMessage = "We're sorry, but an error has occured.  Please, try again.";
             ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
             if (User.IsInRole("Admin") || User.IsInRole("Agent"))
@@ -180,8 +179,29 @@ namespace Dogue.UI.MVC.Controllers
             return View(reservation);
 
         }
+     
+        [HttpPost]
+        [ChildActionOnly]
+        [ValidateAntiForgeryToken]
+        public ActionResult OverbookedCreate([Bind(Include = "ReservationID,OwnerAssetID,LocationID,ReservationDate,ServiceID")] Reservation reservation)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Reservations.Add(reservation);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
+            ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", reservation.ServiceID);
+            return PartialView("OverbookedCreate",reservation);
+        }
+    
+
 
         // GET: Reservations/Edit/5
+        [HttpGet]
         [Authorize(Roles = "Admin, Agent, Photographer")]
         public ActionResult Edit(int? id)
         {
@@ -196,8 +216,21 @@ namespace Dogue.UI.MVC.Controllers
                 return HttpNotFound();
             }
             ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
-            ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
-            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", reservation.ServiceID);
+            if (User.IsInRole("Admin") || User.IsInRole("Agent"))
+            {
+                ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
+                ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", reservation.ServiceID);
+            }
+            else if (User.IsInRole("Photographer"))
+            {
+                ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
+                ViewBag.ServiceID = new SelectList(db.Services.Where(r => r.ServiceID == 1), "ServiceID", "ServiceName", reservation.ServiceID);
+            }
+            else
+            {
+                ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets.Where(r => r.UserID == currentUser), "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
+                ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", reservation.ServiceID);
+            }
             return View(reservation);
         }
 
@@ -209,17 +242,96 @@ namespace Dogue.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ReservationID,OwnerAssetID,LocationID,ReservationDate,ServiceID")] Reservation reservation)
         {
-
+            var currentUser = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
+                var phoShoots = (from l in db.Locations
+                                 where l.LocationID == reservation.LocationID
+                                 select l).FirstOrDefault();
+
+                var phoResCount = from r in db.Reservations
+                                  where reservation.ReservationDate == r.ReservationDate && reservation.ServiceID == 1
+                                  select r;
+
+                var trainResCount = from r in db.Reservations
+                                    where reservation.ReservationDate == r.ReservationDate && reservation.ServiceID == 2
+                                    select r;
+
+                var groomResCount = from r in db.Reservations
+                                    where reservation.ReservationDate == r.ReservationDate && reservation.ServiceID == 3
+                                    select r;
+                var phoResCountCheck = phoShoots.PhotoReservationLimit - phoResCount.Count();
+                var trainResCountCheck = phoShoots.TrainerReservationLimit - trainResCount.Count();
+                var groomResCountCheck = phoShoots.GroomerReservationLimit - groomResCount.Count();
+                if (reservation.ServiceID == 1 && phoResCountCheck > 0)
+                {
+                    db.Entry(reservation).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else if (reservation.ServiceID == 2 && trainResCountCheck > 0)
+                {
+                    db.Entry(reservation).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else if (reservation.ServiceID == 3 && groomResCountCheck > 0)
+                {
+                    db.Entry(reservation).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    if (User.IsInRole("Admin"))
+                    {
+                        return PartialView("OverbookedEdit");
+
+                    }
+                    ViewBag.ReservationMessage = "We're sorry but the reservation limit for that day and/or service has been reached. Please, make new selections.";
+                    ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
+                    ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets.Where(r => r.UserID == currentUser), "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
+                    ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", reservation.ServiceID);
+
+                    return View(reservation);
+                }
+            }
+            ViewBag.ReservationMessage = "We're sorry, but an error has occured.  Please, try again.";
+            ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
+            if (User.IsInRole("Admin") || User.IsInRole("Agent"))
+            {
+                ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
+                ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", reservation.ServiceID);
+            }
+            else if (User.IsInRole("Photographer"))
+            {
+                ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
+                ViewBag.ServiceID = new SelectList(db.Services.Where(r => r.ServiceID == 1), "ServiceID", "ServiceName", reservation.ServiceID);
+            }
+            else
+            {
+                ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets.Where(r => r.UserID == currentUser), "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
+                ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", reservation.ServiceID);
+            }
+            return View(reservation);
+        }
+        [HttpPost]
+        [ChildActionOnly]
+        [ValidateAntiForgeryToken]
+        public ActionResult OverbookedEdit([Bind(Include = "ReservationID,OwnerAssetID,LocationID,ReservationDate,ServiceID")] Reservation reservation)
+        {
+            if (ModelState.IsValid)
+            {
+
                 db.Entry(reservation).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
             ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
             ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", reservation.ServiceID);
-            return View(reservation);
+            return PartialView("OverbookedCreate", reservation);
         }
 
         // GET: Reservations/Delete/5

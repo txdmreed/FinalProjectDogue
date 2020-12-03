@@ -106,7 +106,7 @@ namespace Dogue.EF.DATA
         [Display(Name = "Client Animal Quick Look")]
         public string AssetInfo
         {
-            get { return string.Format("Species: {0} </br>Call Name: {1} </br>{2} </br>Size Profile: {3}", AssetSpecies, AssetCallName, (AssetTrainerCertified == true) ? "Training Certified" : "Training Unknown", AssetSize); }
+            get { return string.Format("Species: {0} || Call Name: {1} || {2} || Size Profile: {3}", AssetSpecies, AssetCallName, (AssetTrainerCertified == true) ? "Training Certified" : "Training Unknown", AssetSize); }
         }
     }
 
@@ -239,8 +239,8 @@ namespace Dogue.EF.DATA
     {
         [Required]
         public string Title { get; set; }
-        [Required]
-        public byte[] PhotoUrl { get; set; }
+       
+        public string PhotoUrl { get; set; }
         [Required]
         [Display(Name = "Filter ID")]
         public int FilterID { get; set; }

@@ -20,13 +20,7 @@
                 @Html.DisplayFor(model => model.Title)
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.PhotoUrl)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.PhotoUrl)
-            </dd>
 
             <dt>
                 @Html.DisplayNameFor(model => model.Filter.FilterName)
@@ -42,6 +36,13 @@
 
             <dd>
                 @Html.DisplayFor(model => model.OwnerAsset.AssetRegisteredName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PhotoUrl)
+            </dt>
+
+            <dd>
+                <img src="~/Content/assets/img/portfolio/T_@Model.PhotoUrl" />
             </dd>
 
         </dl>

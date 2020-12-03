@@ -27,11 +27,11 @@ namespace Dogue.UI.MVC.Controllers
             else
             {
                 var currentUser = User.Identity.GetUserId();
-                var user = (from o in db.OwnerInformations
+                var user = from o in db.OwnerInformations
                                 where o.UserID == currentUser
-                                select o).FirstOrDefault();
+                                select o;
 
-                return View(user);
+                return View(user.ToList());
             }
 
         }

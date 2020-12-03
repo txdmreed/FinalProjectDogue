@@ -187,6 +187,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
+    <Compile Include="Models\PortfolioViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -196,15 +197,12 @@
   <ItemGroup>
     <Content Include="Content\assets\css\style.css" />
     <Content Include="Content\assets\Image\noImage.png" />
-    <Content Include="Content\assets\img\about.jpg" />
-    <Content Include="Content\assets\img\apple-touch-icon.png" />
     <Content Include="Content\assets\img\clients\client-1.png" />
     <Content Include="Content\assets\img\clients\client-2.png" />
     <Content Include="Content\assets\img\clients\client-3.png" />
     <Content Include="Content\assets\img\clients\client-4.png" />
     <Content Include="Content\assets\img\clients\client-5.png" />
     <Content Include="Content\assets\img\clients\client-6.png" />
-    <Content Include="Content\assets\img\favicon.png" />
     <Content Include="Content\assets\img\portfolio\noImage.png" />
     <Content Include="Content\assets\img\portfolio\portfolio-1.jpg" />
     <Content Include="Content\assets\img\portfolio\portfolio-2.jpg" />
@@ -236,10 +234,18 @@
     <Content Include="Content\assets\img\slide\slide-1.jpg" />
     <Content Include="Content\assets\img\slide\slide-2.jpg" />
     <Content Include="Content\assets\img\slide\slide-3.jpg" />
-    <Content Include="Content\assets\img\team\team-1.jpg" />
-    <Content Include="Content\assets\img\team\team-2.jpg" />
-    <Content Include="Content\assets\img\team\team-3.jpg" />
-    <Content Include="Content\assets\img\team\team-4.jpg" />
+    <Content Include="Content\assets\img\team\Cade.jpg" />
+    <Content Include="Content\assets\img\team\Chad.jpg" />
+    <Content Include="Content\assets\img\team\Christina.jpg" />
+    <Content Include="Content\assets\img\team\Elizabeth.jpg" />
+    <Content Include="Content\assets\img\team\Justin.jpg" />
+    <Content Include="Content\assets\img\team\Justin2.jpg" />
+    <Content Include="Content\assets\img\team\Logan.jpg" />
+    <Content Include="Content\assets\img\team\Male developer.jpg" />
+    <Content Include="Content\assets\img\team\Nick.jpg" />
+    <Content Include="Content\assets\img\team\Tyler.jpg" />
+    <Content Include="Content\assets\img\team\zach.jpg" />
+    <Content Include="Content\assets\img\team\Zach2.jpg" />
     <Content Include="Content\assets\js\main.js" />
     <Content Include="Content\assets\vendor\animate.css\animate.compat.css" />
     <Content Include="Content\assets\vendor\animate.css\animate.css" />
@@ -282,6 +288,7 @@
     <Content Include="Content\assets\vendor\venobox\venobox.min.css" />
     <Content Include="Content\assets\vendor\venobox\venobox.min.js" />
     <Content Include="Content\assets\vendor\waypoints\jquery.waypoints.min.js" />
+    <Content Include="favicon %285%29.ico" />
     <Content Include="favicon.ico" />
     <Content Include="forms\contact.php" />
     <Content Include="forms\Readme.txt" />
@@ -396,6 +403,8 @@
     <Content Include="Views\MySeminars\Details.cshtml" />
     <Content Include="Views\MySeminars\Edit.cshtml" />
     <Content Include="Views\MySeminars\Index.cshtml" />
+    <Content Include="Views\Reservations\OverbookedCreate.cshtml" />
+    <Content Include="Views\Reservations\OverbookedEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dogue.EF.DATA\Dogue.EF.DATA.csproj">

@@ -11,7 +11,7 @@
 
         @if (User.IsInRole("Admin"))
         {
-           <a href="@Url.Action("ClientMenu","Home")">Return to Admin Menu</a>
+            @Html.ActionLink("Return to Admin Menu", "AdminMenu", "Manage")
 
         }
         else if (User.IsInRole("Agent") || User.IsInRole("Photographer"))

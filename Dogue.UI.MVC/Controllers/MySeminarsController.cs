@@ -16,6 +16,7 @@ namespace Dogue.UI.MVC.Controllers
         private DogueFinalProjectEntities db = new DogueFinalProjectEntities();
 
         // GET: MySeminars
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             if (Request.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("Admin") || User.IsInRole("Photographer"))
@@ -36,6 +37,7 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         // GET: MySeminars/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -51,6 +53,7 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         // GET: MySeminars/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.SeminarID = new SelectList(db.Seminars, "SeminarID", "SeminarName");
@@ -62,6 +65,7 @@ namespace Dogue.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "MySeminarID,SeminarID")] MySeminar mySeminar)
         {
             if (ModelState.IsValid)
@@ -76,6 +80,7 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         // GET: MySeminars/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -96,6 +101,7 @@ namespace Dogue.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "MySeminarID,SeminarID")] MySeminar mySeminar)
         {
             if (ModelState.IsValid)
@@ -109,6 +115,7 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         // GET: MySeminars/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -124,6 +131,7 @@ namespace Dogue.UI.MVC.Controllers
         }
 
         // POST: MySeminars/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

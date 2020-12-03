@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Dogue.EF.DATA;
+using Dogue.UI.MVC.Models;
 using Dogue.UI.MVC.Utilities;
 
 namespace Dogue.UI.MVC.Controllers
@@ -20,6 +21,14 @@ namespace Dogue.UI.MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            
+            var photos = db.Photos.Include(p => p.Filter).Include(p => p.OwnerAsset);
+
+            return View(photos.ToList());
+        }
+        [HttpGet]
+        public ActionResult PhotosTileView()
+        {
             var photos = db.Photos.Include(p => p.Filter).Include(p => p.OwnerAsset);
             return View(photos.ToList());
         }
@@ -27,11 +36,27 @@ namespace Dogue.UI.MVC.Controllers
         [HttpGet]
         public ActionResult Portfolio()
         {
-            return View();
+            List<PortfolioViewModel> pvm = new List<PortfolioViewModel>();
+            var allPhotos = (from photo in db.Photos
+                             select new { photo.PhotoID, photo.Title, photo.PhotoUrl, photo.FilterID, photo.Filter.FilterName, photo.OwnerAssetID, photo.OwnerAsset.AssetCallName, }).ToList();
+            foreach (var item in allPhotos)
+            {
+                PortfolioViewModel objPVM = new PortfolioViewModel();
+
+                objPVM.PhotoID = item.PhotoID;
+                objPVM.FilterName = item.FilterName;
+                objPVM.PhotoUrl = item.PhotoUrl;
+                objPVM.Title = item.Title;
+                objPVM.AssetCallName = item.AssetCallName;
+                objPVM.FilterID = item.FilterID;
+
+                pvm.Add(objPVM);
+            }
+            return View(pvm.ToList());
         }
 
         // GET: Photos/Details/5
-        [HttpGet]
+        
         public ActionResult Details(int? id)
         {
             if (id == null)

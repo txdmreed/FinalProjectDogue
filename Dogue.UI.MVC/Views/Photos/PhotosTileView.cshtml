@@ -6,8 +6,8 @@
 }
 
 <div class="container">
-    <h2 class="centerme">Photos Tiles</h2>
-    <div></div>
+    <h2 class="centerMe">Photos Tiles</h2>
+    <p class="centerMe"><a href="@Url.Action("Index","Photos")">Table View</a></p>
     <div class="row centerme">
         @if ((User.IsInRole("Admin") && Request.IsAuthenticated) || (User.IsInRole("Photographer") && Request.IsAuthenticated))
         {
@@ -18,30 +18,25 @@
 
         }
 
-        <div class="col-md-6">
-            @Html.ActionLink("Table View", "Index", "Photo")
+        <div>
+            
         </div>
-    </div>
-    <div class="col-md-6">
-        @Html.ActionLink("Table View", "Index", "Photos", null, new { @class = "btn btn-secondary" })
     </div>
 
 
     @foreach (var item in Model)
     {
-        <div class="gContainer">
+        <div class="galleryContainer">
             <div class="gContent">
-                <a href="@Url.Action("Details", "Photo",new { id = item.PhotoID })" id=courseName><img src="~/Content/assets/img/portfolio/t_@item.PhotoUrl" /></a>
+                <a href="@Url.Action("Details", "Photos",new { id = item.PhotoID })" id=courseName><img src="~/Content/assets/img/portfolio/T_@item.PhotoUrl" class=" boxImage"/></a>
 
 
                 @if (User.IsInRole("Admin"))
                 {
-                    <p class="gFooterLeft">
+                    <p class="galleryFooterLeft">
                         @Html.ActionLink("Edit", "Edit", new { id = item.PhotoID })
                     </p>
-                    <p class="gFooterRight">
-                        @Html.ActionLink("Delete", "Delete", new { id = item.PhotoID })
-                    </p>
+
                 }
             </div>
         </div>

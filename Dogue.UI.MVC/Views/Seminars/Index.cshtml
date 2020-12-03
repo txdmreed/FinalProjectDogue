@@ -6,29 +6,21 @@
 
 <div class="container">
     <h2 class="centerMe">Seminar Menu</h2>
+    <p class="centerMe"> Call Your Local Office to Reserve Your Spot Today!</p>
     @if (User.IsInRole("Admin") || User.IsInRole("Admin"))
     {
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create") | @Html.ActionLink("Return to Admin Menu", "AdminMenu", "Manage")
     </p>
     }
     <table id="datatable" class="table">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.SeminarReservationLimit)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.SeminarName)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.SeminarDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SeminarNotes)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SeminarSpeaker)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Location.LocationName)
@@ -41,19 +33,10 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.SeminarReservationLimit)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.SeminarName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.SeminarDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SeminarNotes)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SeminarSpeaker)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Location.LocationName)

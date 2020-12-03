@@ -163,7 +163,7 @@ namespace Dogue.UI.MVC.Controllers
                         string savePath = Server.MapPath("~/Content/assets/Image/");
                         if (ownerAsset.AssetPhoto != null && ownerAsset.AssetPhoto != "noImage.png")
                         {
-                            System.IO.File.Delete(Server.MapPath("~/Content/asset/Image/" + Session["currentImage"].ToString()));
+                            System.IO.File.Delete(Server.MapPath("~/Content/assets/Image/" + ownerAsset.AssetPhoto));
                         }
                         ownerAsset.AssetPhoto = imageName;
                         Image convertedImage = Image.FromStream(myImg.InputStream);
@@ -212,7 +212,7 @@ namespace Dogue.UI.MVC.Controllers
             OwnerAsset ownerAsset = db.OwnerAssets.Find(id);
             if (ownerAsset.AssetPhoto != null && ownerAsset.AssetPhoto != "noImage.png")
             {
-                System.IO.File.Delete(Server.MapPath("~/Content/asset/Image/" + Session["currentImage"].ToString()));
+                System.IO.File.Delete(Server.MapPath("~/Content/assets/Image/" + ownerAsset.AssetPhoto));
             }
             db.OwnerAssets.Remove(ownerAsset);
             db.SaveChanges();

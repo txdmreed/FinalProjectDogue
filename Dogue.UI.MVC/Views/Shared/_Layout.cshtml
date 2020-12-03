@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Groovin Bootstrap Template - Index</title>
+    <title>FSDP Dogue Client Portal MockUp</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="~/Content/assets/img/favicon.png" rel="icon">
-    <link href="~/Content/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="shortcut icon" href="/favicon (5).ico" type="image/x-icon" />
+    <link rel="icon" href="~/favicon (5).ico" type="image/x-icon" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,7 +20,8 @@
 
     <link href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" rel="stylesheet" />
     @*<link href="fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">*@
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    @*<link rel="stylesheet" href="/resources/demos/style.css">*@
     <!-- Vendor CSS Files -->
     <link href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -84,7 +85,7 @@
                                     <a href="#">Seminars</a>
                                     <ul>
                                         <li><a href="@Url.Action("Index", "Seminars")">All Seminars</a></li>
-                                        <li><a href="@Url.Action("Index","MySeminars")">Seminar Reserves</a></li>
+                                        @*<li><a href="@Url.Action("Index","MySeminars")">Seminar Reserves</a></li>*@
                                     </ul>
                                 </li>
 
@@ -120,8 +121,8 @@
                                 <li class="drop-down">
                                     <a href="#">Seminars</a>
                                     <ul>
-                                        <li><a href="@Url.Action("Index", "Seminars")">All Seminars</a></li>
-                                        <li><a href="@Url.Action("Index","MySeminars")">My Seminars</a></li>
+                                        <li><a href="@Url.Action("Index", "Seminars" )">All Seminars</a></li>
+                                        @*<li><a href="@Url.Action("Index","MySeminars")">My Seminars</a></li>*@
                                     </ul>
                                 </li>
                             </ul>
@@ -233,7 +234,7 @@
     <script src="~/Content/assets/vendor/venobox/venobox.min.js"></script>
     <script src="~/Content/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
     <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
     <!-- Template Main JS File -->
     <script src="~/Content/assets/js/main.js"></script>
@@ -257,6 +258,10 @@
             }
         });
 
+
+        $(function () {
+            $("#datepicker").datepicker();
+        });
     </script>
 
 </body>
