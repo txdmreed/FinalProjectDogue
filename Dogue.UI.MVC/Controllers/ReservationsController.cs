@@ -146,7 +146,10 @@ namespace Dogue.UI.MVC.Controllers
                     {
                         if (User.IsInRole("Admin"))
                     {
-                        return PartialView("OverbookedCreate");
+                        ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
+                        ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
+                        ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", reservation.ServiceID);
+                        return PartialView("OverbookedCreate", reservation);
                         
                     }
                         ViewBag.ReservationMessage = "We're sorry but the reservation limit for that day and/or service has been reached. Please, make new selections.";
@@ -180,8 +183,8 @@ namespace Dogue.UI.MVC.Controllers
 
         }
      
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        [ChildActionOnly]
         [ValidateAntiForgeryToken]
         public ActionResult OverbookedCreate([Bind(Include = "ReservationID,OwnerAssetID,LocationID,ReservationDate,ServiceID")] Reservation reservation)
         {
@@ -285,7 +288,10 @@ namespace Dogue.UI.MVC.Controllers
                 {
                     if (User.IsInRole("Admin"))
                     {
-                        return PartialView("OverbookedEdit");
+                        ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
+                        ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetCallName", reservation.OwnerAssetID);
+                        ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", reservation.ServiceID);
+                        return PartialView("OverbookedEdit", reservation);
 
                     }
                     ViewBag.ReservationMessage = "We're sorry but the reservation limit for that day and/or service has been reached. Please, make new selections.";
@@ -315,8 +321,8 @@ namespace Dogue.UI.MVC.Controllers
             }
             return View(reservation);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        [ChildActionOnly]
         [ValidateAntiForgeryToken]
         public ActionResult OverbookedEdit([Bind(Include = "ReservationID,OwnerAssetID,LocationID,ReservationDate,ServiceID")] Reservation reservation)
         {

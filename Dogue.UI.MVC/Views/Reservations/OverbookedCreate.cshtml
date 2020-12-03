@@ -1,59 +1,69 @@
 ﻿@model Dogue.EF.DATA.Reservation
 
-<div class="container">
-    <h2 class="text-danger" style="color:darkred"><em><strong>*The date you have selected for this service is overbooked.  You may change the data or re-enter it here to confirm you wish to override the limit.</strong></em></h2>
+<div class="overbook">
+    <div class="centerMe">
+        <h2 class="text-danger" style="color:darkred"><em><strong>*The date you have selected for this service is overbooked.  You may change the data or re-enter it here to confirm you wish to override the limit.</strong></em></h2>
 
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm("OverbookedCreate", "Reservations"))
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>Reservation</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.OwnerAssetID, "Client Animal", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("OwnerAssetID", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.OwnerAssetID, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+                <h4>Reservation</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <p>
+                        @Html.LabelFor(model => model.OwnerAssetID, "Client Animal", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("OwnerAssetID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.OwnerAssetID, "", new { @class = "text-danger" })
+                        </div>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <p>
+                        @Html.LabelFor(model => model.LocationID, "Location", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("LocationID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.LocationID, "", new { @class = "text-danger" })
+                        </div>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <p>
+                        @Html.LabelFor(model => model.ReservationDate, "Reservation Date", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ReservationDate, new { htmlAttributes = new { @id = "datepicker" } })
+                            @Html.ValidationMessageFor(model => model.ReservationDate, "", new { @class = "text-danger" })
+                        </div>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <p>
+                        @Html.LabelFor(model => model.ServiceID, "Service", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ServiceID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ServiceID, "", new { @class = "text-danger" })
+                        </div>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
                 </div>
             </div>
+        }
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Location.LocationID, "Location", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("LocationID", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Location.LocationID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ReservationDate, "Reservation Date", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ReservationDate, new { htmlAttributes = new { @id = "datepicker" } })
-                    @Html.ValidationMessageFor(model => model.ReservationDate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ServiceID, "Service", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("ServiceID", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.ServiceID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
         </div>
-    }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
 </div>
 @section Scripts {
